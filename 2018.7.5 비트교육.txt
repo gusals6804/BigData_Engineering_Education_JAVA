@@ -1,0 +1,125 @@
+java 설치 확인
+
+- 윈도우 검색 창: cmd (콘솔 창)
+  javac -version
+
+1.java 설치
+
+www.oracle.com
+menu창 - developers - downloads - java 
+
+64비트 확인
+
+java(jdk) for developers
+
+Java SE 8u171/ 8u172 - jdk download
+
+라이센스 동의 버튼 체크
+
+x86-32비트
+
+모두 다 next
+
+-환경변수 설정-
+
+내 pc - 속성 - 고급 시스템 설정 - 환경 변수 - 아래 쪽 새로 만들기 
+- 변수 이름: JAVA_HOME 
+- 변수 값: C드라이브 프로그램 파일 JAVA (C:\Program Files\Java\jdk1.8.0_171)
+- 시스템 변수 Path 편집 - 새로 만들기 - %JAVA_HOME%\bin - 맨 위로 이동
+
+그리고 cmd창에서 버전 확인(새로 열기)
+javac -version
+
+2. 툴 설치
+
+http://www.eclipse.org/
+
+download
+
+주황색 버튼 아래
+download packages
+
+Eclipse IDE for Java EE Developers 비트 확인 - download - 압축 풀기
+
+바탕화면에 바로 가기 만들기
+
+내 폴더로 위치 지정
+
+3. 이클립스 실행
+
+오른 쪽 끝에서 두번째 open persepetive - java 추가
+
+file - new - java project - prj01
+
+x창 다 끄기
+
+window- show view - project explorer : 프로젝트 관리
+
+IDE: 통합개발환경
+
+prj01 오른쪽 버튼 - new - class
+
+f1 f2 f3 - package안에 파일 package들을 묶어서 project
+
+Package : PACK01
+Name : Hello
+
+public static void main 체크하기
+
+finish
+
+ctrl + : 글자 키우기
+
+// TODO Auto-generated method stub 지우기
+
+*출력 코드 걸겠습니다*
+syso 컨트롤 스페이스 System.out.println() 엔터
+
+()안에 원하는 글자 입력 "호랑이"
+
+컨트롤 + f11 : 출력
+
+tab : 줄 맞추기
+
+컨트롤 + a - 컨트롤 + i : 자동 줄 맞추기
+
+println : 줄바꿈 
+
+숫자는 "" 필요없음
+
+"" 더블컨테이션 안에 있는 것은 문자열(string)
+
+"356"도 문자열
+
+숫자도 더하고 문자열도 같이 나온다.
+
+"100" + "200" 결과값은 100200
+
+100 + "200" 결과값은 1002000 숫자열과 문자열이 붙으면 둘 다 문자열로 나온다.
+
+100 + 200 + "300" 결과값은 300300
+
+"100" + 200 + 300 결과값은 100200300 숫자와 문자가 만나면 무조건 문자열
+
+
+package PACK01;
+
+public class Hello {
+
+	public static void main(String[] args) {
+		System.out.println("김현민");
+		System.out.println("호랑이");
+		System.out.println("♡大");
+		System.out.println(123);
+		System.out.println(100+200);
+		System.out.println("앵무새"+"소나무");
+		System.out.println("100"+"200");
+		System.out.println(100+"200");
+		System.out.println(100+200+"300");
+		System.out.println("100"+200+300);
+	}
+
+}
+
+
+
