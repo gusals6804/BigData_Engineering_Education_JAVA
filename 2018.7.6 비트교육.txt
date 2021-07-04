@@ -1,0 +1,247 @@
++
+-
+*
+/ : 몫
+% : 나머지
+곱셈 먼저
+괄호가 제일 먼저
+괄호 만드는 습관 가지기
+
+byte : 1개 - apple(변수)
+short : 2개
+int : 4개
+long : 8개
+
+// : 주석을 잡는다
+
+/* ~ */ : 범위안에 모두 주석
+
+컨트롤 시프트 / : 자동 주석 달기
+
+컨트롤 시프트 \ : 반대로 주석 풀기
+
+2의 8제곱 : 256
+2의 16제곱 : 65536
+2의 32제곱 : 40억 이상
+
+0,1 : bit 상태
+8bit = 1byte
+16bit = 2byte
+32bit = 4byte
+
+전구 3개 -4~3
+전구 8개 -128~127
+
+-2(n-1)제곱 ~ +2(n-1)제곱-1
+
+//산술연산자
+/*---------------------------------------------*/		
+		System.out.println("호랑이");
+		System.out.println(17+4);
+		System.out.println(17-4);
+		System.out.println(17*4);
+		System.out.println(17/4);
+		System.out.println(17%4);
+		System.out.println(3+2*4);
+		System.out.println((3+2)*4);
+		System.out.println(3+(2*4));
+
+//데이터 타입
+/*---------------------------------------------*/		
+		byte apple = 30;
+                //System.out.println("apple");
+		System.out.println(apple);
+
+/*---------------------------------------------*/	
+		apple = 127;
+		apple = -128;
+	        //apple = -129; 숫자유효범위 
+		
+		short banana = 3000;
+		banana = -32767;
+		System.out.println(banana);
+
+//변수명
+/*---------------------------------------------*/
+	        long apple;
+	        //long apple; 변수 이름은 동일하게 만들 수 없다.
+		
+		long apple99; // 변수 이름에 숫자 사용 가능
+		//long 99apple 변수 이름 첫번째는 숫자 사용 불가능 
+		
+		long 사과; // 한글을 사용할 수 있지만 가급적 사용 금지
+		
+		//long apple!; 변수 이름으로 특수 문자 사용 불가능 
+		long apple_; // 특수문자 중에서 _ , $ 사용 가능
+		long _999; // _ , $ 와 숫자는 함께 사용 가능
+		
+		long Apple100;
+		long apple100; // 대소문자는 구별해서 사용 가능
+		
+		long moneycount; // 두 단어가 합성이 될 때 첫 째 단어는 대문자로 한다.
+		long MoneyCount; // 낙타표기법
+
+ctrl + alt + 방향키 : 원하는 방향으로 복사
+alt + 방항키 : 원하는 방향으로 이동
+ctrl + D : 커서가 있는 줄 삭제
+ctrl + Z : 이전 작업으로 돌아가기
+ctrl + Y : 원래 작업으로 돌아가기
+
+//변수 사용
+/*---------------------------------------------*/
+	        int a;
+		a = 10;
+		System.out.println(a);
+		
+		int b = 20; // 변수 선언과 동시에 초기화
+		System.out.println(b);
+		
+		int c,d,e; // 동시에 변수를 만들 수 있음
+		int f = 10 , g , h = 20; // 섞어서 쓸 수 있다.
+		
+		int a1 = 3, a2;
+		System.out.println(a1);
+		//System.out.println(a2); 쓰레기 값 때문에 오류, 초기화를 하고 출력 해야한다.
+		
+		int b1 = 50, b2 = 3;
+		System.out.println(b1+b2);
+		System.out.println(b1-b2);
+		System.out.println(b1*b2);
+		System.out.println(b1/b2);
+		System.out.println(b1%b2); // 변수를 사용하면 변수 값만 수정하면 된다.
+
+//비교 연산자 (<,<=,>,>=,==,!=)
+/*---------------------------------------------*/
+		System.out.println(50>3);
+		System.out.println(50<3);
+		System.out.println(3>=3);
+		System.out.println(2>=3);
+		System.out.println(3<=3);
+		System.out.println(3==3); 
+		System.out.println(3==4);
+		System.out.println(3!=4);
+		System.out.println(3!=3);
+		
+		int a = 4, b = 3;
+		System.out.println(a>b);
+		System.out.println(a!=b);
+		System.out.println(a-3>b); // 산술 연산이 먼저 일어난다.
+		//a + b = 3;  왼쪽에는 산술 연산이 일어나면 안된다.
+		
+		a = 10;
+		System.out.println(a);
+		a = a + 3; // a = 10 + 3
+		System.out.println(a);
+		
+		a++; // 현재 a값에 1을 더해준다. ++: 1이 증가한다.
+		System.out.println(a);
+		
+		a--; // 현재 a값에 1을 빼준다. ++: 1이 감소
+		System.out.println(a);
+		
+		// a = a + 1; a++; ++을 쓰는게 더 빠르다.
+		a = a + 1;
+		System.out.println(a);
+		
+		a = a + 3; // 컴파일 
+		System.out.println(a);
+		a += 3; // 번역이 빠르다, 이렇게 쓰는 것이 더 좋다. 
+		System.out.println(a); // a = a + 3 과 동일하다.
+
+논리 OR : 하나만 true이면 연산 결과는 true
+논리 AND : 모두 ture이면 연산 결과는 true
+
+//논리 연산자 (&&,||,&,|,^,!)
+/*---------------------------------------------*/
+		int key = 0;
+		int money = 4999;
+		System.out.println(key>=0||money>=5000);
+		System.out.println(key>=1||money>=5000);
+		
+		// 논리 OR 연산
+		System.out.println(false||false);
+		System.out.println(true||false);
+		System.out.println(false||true);
+		System.out.println(true||true);
+		
+		// 논리 AND 연산
+		System.out.println(false&&false);
+		System.out.println(true&&false);
+		System.out.println(false&&true);
+		System.out.println(true&&true);
+		
+		// 논리 부정 ! : 반대로 결과가 나온다.
+		System.out.println(!true);
+		System.out.println(!(3>2));
+		
+		// 범위의 사이에는 논리 AND 연산을 쓴다
+		int height = 185;
+		System.out.println(height>=180 && height<=195);
+		
+		// 논리 OR을 쓰는 경우
+		int age = 15;
+		System.out.println(age<=10 || age>=70);
+		
+		int save = 5200;
+		age = 72;
+		System.out.println((age<=10 || age>=70) && (save<=5000));
+		
+		age = 70;
+		save = 5200;
+		System.out.println((age<=10 || age>=70) && 
+				   (age<=10 && save<=100) ||
+				   (age>=70 && save<=5000));
+
+/*---------------------------------------------*/
+		int x = 3, y = 4;
+		System.out.println(x);
+		System.out.println(y);
+		System.out.println(x+y);
+		System.out.println(x+""+y); // 한 줄로 입력
+		System.out.println(x+" "+y); // 가운데 띄어준다.
+		System.out.println("호\n랑\n이"); // 줄 바꿈
+		System.out.println("호\t랑\t이"); // 수평탭
+		
+		{
+			int a = 10; // 스코프 안에서만 사용
+			System.out.println(a);
+		}// 여기서 a라는 메모리가 없어진다.
+		// a = 80; 스코프 밖에는 안된다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
