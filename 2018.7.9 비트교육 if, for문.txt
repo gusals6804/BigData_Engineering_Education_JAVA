@@ -1,0 +1,250 @@
+ctrl + i 정렬
+
+4대 제어문
+
+조건 if switch
+
+반복 for while
+
+기본 구조
+/*---------------------------------------------*/	
+
+		if() {
+			
+		}
+		switch() {
+		
+		}
+		for() {
+			
+		}
+		while() {
+			
+		}
+
+if문 예제	
+/*---------------------------------------------*/
+
+     	     /* System.out.println("시작");
+		//if(true) {
+		//if(false) {
+		//if(3>2) {
+		//if(3<2) {
+		//if(3>2 && 7==7) {
+		//if(3<2 && 7==7) {
+		//if(3>2 && 7==8) {
+		//if(3>2 || 7==8) {
+		//if(3<2 || 7==7) {
+			System.out.println("호랑이");
+			System.out.println("코끼리");
+			System.out.println("앵무새");
+			}
+		System.out.println("끝"); */
+
+     	       /* int number = 55;
+		//if(number>5) {
+		//if(number%2==0) {
+		//if(number%2==1) {
+		//System.out.println("호랑이");
+		//if(number%2==0) {
+		  if(number%2==1) {
+			System.out.println("호랑이");
+		} */
+
+if-else문
+/*---------------------------------------------*/		
+            
+	     /* int num = 10;
+		if(num%2==0) {
+			System.out.println("짝수입니다.");
+		} else {
+			System.out.println("홀수입니다.");
+		} */
+		
+		int n = 1779012;
+		if(n/1000000==1) {
+			System.out.println("남자");
+		} else {
+			System.out.println("여자");
+		}
+	        
+ 	 	//int num = 10;
+		int num = 9;
+		if (num%2==0) {
+			System.out.println("짝수입니다.");
+		}else {
+			System.out.println("홀수입니다.");
+		}
+
+if-esle if-else문
+/*---------------------------------------------*/
+
+/*		//if(3>2) {
+		if(3<2) {	
+			System.out.println("호랑이");
+		}else if(4<2) {
+			System.out.println("코끼리");
+		}else if(true){
+			System.out.println("올빼미");
+		}else {
+			System.out.println("고양이");
+		}
+	}*/
+
+학점 구하기
+/*---------------------------------------------*/
+
+/*		int num = 85;
+		if(num>=90) {	
+			System.out.println("학점은 A 입니다.");
+		}else if(num>=80) {
+			System.out.println("학점은 B 입니다.");
+			System.out.println("조금만 더 하면 A학점");
+		}else if(num>=70) {
+			System.out.println("학점은 C 입니다.");
+		}else {
+			System.out.println("재수강입니다.");
+		}*/
+
+띠 구하기
+/*---------------------------------------------*/		
+		int year = 1545;
+		int q = year % 12;
+		if(q==0) {
+			System.out.println("원숭이띠(신)");
+		}else if(q==1) {
+			System.out.println("닭띠(유)");
+		}else if(q==2) {
+			System.out.println("개띠(술)");
+		}else if(q==3) {
+			System.out.println("돼지띠(해)");
+		}else if(q==4) {
+			System.out.println("쥐띠(자)");
+		}else if(q==5) {
+			System.out.println("소띠(축)");
+		}else if(q==6) {
+			System.out.println("범띠(인)");
+		}else if(q==7) {
+			System.out.println("토키띠(묘)");
+		}else if(q==8) {
+			System.out.println("용띠(진)");
+		}else if(q==9) {
+			System.out.println("뱀띠(사)");
+		}else if(q==10) {
+			System.out.println("말띠(오)");
+		}else if(q==11) {
+			System.out.println("소띠(미)");
+		}
+
+중첩 if문
+/*---------------------------------------------*/
+
+/*		System.out.println("시작");
+		if(true) {
+			System.out.println("호랑이1");
+			if(3<2) { // 여기서 false이면 코끼리가 출력이 되지 않는다.
+				System.out.println("코끼리");
+			}
+			System.out.println("호랑이2");
+		}*/
+		
+		int num = 83;
+		int q = num/10; // 십의 자리 숫자 2 몫의 약자 q
+		int r = num%10; // 일의 자리 숫자 4 나머지의 약자 r
+		if(q%2==0) {	// 앞자리가 짝수인지
+			if(r%2==0) { // 뒷자리가 짝수 인지
+				System.out.println("우동");
+			}else {
+				System.out.println("탕수육");
+			}
+		}else {	//앞자리가 홀수 일 때
+			if(r%2==0) { //뒷자리가 짝수 일 때
+				System.out.println("짜장");
+			}else {
+				System.out.println("짬뽕");
+			}
+		}
+
+for 문
+/*---------------------------------------------*/
+
+/*		for(int i = 0; i<10; i++) {
+			System.out.println("호랑이");
+		}*/
+		
+/*		for(int i = 0; i<10; i++) {
+			System.out.println(i);
+		}*/
+
+for 문 단축키
+/*---------------------------------------------*/		
+/*		for + ctrl + space 
+		방향키 하나 아래로 ctrl + shift + del로 지우기*/
+		
+/*		for (int i = 0; i < 10; i++) {
+			System.out.println(5+"*"+i+"="+(i*5));
+		}*/
+
+1-10까지 합
+/*---------------------------------------------*/		
+/*		int s = 0;
+		for (int i = 1; i <= 10; i++) {
+			s = s + i;
+		}
+		System.out.println(s);*/
+		
+		int s = 0;
+		for(int i = 1; i <= 10; i++) {
+			s = s + i;
+			System.out.println(s);
+		}
+
+랜덤 숫자 출력
+/*---------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+
+public class Hello {
+
+	public static void main(String[] args) {
+		int a = (new Random()).nextInt(100); //컨트롤  + 스페이스 
+		System.out.println(a); // 100미만의 숫자 중에서 랜덤으로 출력
+	}
+	
+}
+
+int rn = (new Random()).nextInt(100);
+
+랜덤 숫자 10개 출력
+/*---------------------------------------------*/
+		
+		for (int i = 0; i < 10; i++) {
+		int rn = (new Random()).nextInt(100); //컨트롤  + 스페이스 
+		System.out.println(rn); // 100미만의 숫자 중에서 랜덤으로 출력
+		}
+
+랜덤 숫자 10개의 합
+/*---------------------------------------------*/
+
+		int sum = 0;
+		
+		for (int i = 0; i < 10; i++) {
+			int rn = (new Random()).nextInt(10);  
+			System.out.println(rn);
+			sum = sum + rn;
+		}
+		
+		System.out.println("합계"+" = "+sum);
+	
+
+
+
+
+
+
+
+
+
+
