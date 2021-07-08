@@ -1,0 +1,294 @@
+
+문제 풀이
+/*---------------------------------------------*/
+/*		System.out.println("숫자를 입력하세요.");
+		int input = (new Scanner(System.in)).nextInt();
+		for (int i = 0; i < input; i++) {
+			int rn = (new Random()).nextInt(100);
+			
+			int q = rn/10;
+			int r = rn%10;
+			
+			System.out.println(rn);
+		} */
+		
+/*		byte 1 8bit
+		short 2 숫자
+		char 2 문자
+		int 4
+		long 8
+		float 정수, 실수 4
+		double 8
+		boolean true or false */
+
+// 3의 배수만 대문자 출력
+		
+/*		for (int i = 0; i < 26; i++) {
+			if(i%3==0) {
+				System.out.println((char)('A'+i));
+			}else {
+				System.out.println((char)('a'+i));
+			}
+		} */
+
+// 숫자 교환 프로그램
+		
+		int a=5, b=7, t;
+		System.out.println(a+" "+b);
+		t = a;
+		a = b;
+		b = t;
+		System.out.println(a+" "+b);
+
+/*---------------------------------------------*/
+
+// 10. 문자열을 출력하는 방법
+
+String : 문자열
+
+		String a = "호랑이"; // 문자열을 사용하는 두 가지 방법
+		System.out.println(a);
+
+		String b = new String("코끼리"); // 2번이 더 중요
+		System.out.println(b);
+
+/*---------------------------------------------*/
+
+// 기본 타입의 최대값과 최소값
+// 컨트롤 + 스페이스로 쉽게 코딩하기
+
+
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Integer.MIN_VALUE);
+		System.out.println(Long.MAX_VALUE);
+		System.out.println(Long.MIN_VALUE);
+
+/*---------------------------------------------*/
+
+		int x = 3, y = 4;
+		boolean result = (x+y) < 10;
+		System.out.println(result);
+
+/*---------------------------------------------*/
+
+// 우선 순위에는 괄호를 꼭 사용하기
+
+		int a = 3 * ((4 / 5) % 7);
+		System.out.println(a);
+
+/*---------------------------------------------*/
+
+// 한꺼번에 사용할 수 있다.
+
+		int b, c, d;
+		b = 5;
+		b = c = d = 5;
+
+/*---------------------------------------------*/
+
+// 부호 연산자
+
+		int a = -10;
+		int b = 10;
+		int c = +10; // 줄 맞춤 용도
+
+		int d = 10;
+		System.out.println(10);
+		d += 1;
+		System.out.println(d);
+		d =+ 1;
+		System.out.println(d); // 복합 연산자와 헷갈리지 않기
+
+/*---------------------------------------------*/
+
+// ++i 와 i++의 차이
+
+		int a = 10, b;
+		b = a++; // a++은 대입 증가 순서이다.
+		System.out.println(a+" "+b); // 이거 하나만 외우기
+		int c = 10, d;
+		d = ++c; // ++a은 증가 대입 순서이다.
+		System.out.println(c+" "+d);
+
+		int e = 10, f = 10;
+		e++;
+		++f; // 전문가들은 이것을 선호, 통합용으로 좀 더 빠르다.
+		System.out.println(e+" "+f); 
+		// 단독으로 사용할 때는 차이 없음
+
+/*---------------------------------------------*/
+
+// 문자열 연결 연산자
+
+		String a = new String("호랑이");
+		a = a + "코끼리"; //문자열 연결 연산자
+		System.out.println(a);
+		a = a + "앵무새";
+		System.out.println(a);
+		a = "소나무"; //리셋이 된다.
+		System.out.println(a);
+		a = a + "대나무";
+		System.out.println(a);
+
+/*---------------------------------------------*/
+
+// 11. 삼항 연산자
+
+		int a;
+		if(3>2) {
+			a = 10;
+		}else {
+			a = 20;
+		} // 조건이 걸리면서 어떤 쪽이든 변수가 값을 받을 때
+		  // 삼항 연산으로 바꾼다.
+		System.out.println(a);
+		
+		a = (3<2) ? 10 : 20; // 위에 if문과 같다.
+		System.out.println(a);
+		// () 조건을 만족하면 ? 값을 넣고 아니면 : 값을 넣는다.
+
+예제 2
+/*---------------------------------------------*/
+
+		String s ;
+		if(100>50) {
+			s = "호랑이";
+		}else {
+			s = "코끼리";
+		}
+		System.out.println(s);
+		
+		s = (100>50) ? "호랑이" : "코끼리";
+		System.out.println(s);
+
+예제 3
+/*---------------------------------------------*/
+
+		System.out.println(s);
+		
+		s = (100>50) ? "호랑이" : "코끼리";
+		System.out.println(s);
+	
+		int b;
+		b = (3<2) ? 10 : (5>10) ? 20 : 30;
+		System.out.println(b);
+		
+/*---------------------------------------------*/
+
+//소수점 0.0 ~ 1.0 사이에 랜덤으로 뽑는다.
+
+		for (int i = 0; i < 10; i++) {
+/*			double a = Math.random(); 
+			System.out.println(a*100);*/
+
+//정수값으로 바꾼다. int 사용	
+	
+			double b = Math.random(); 
+			System.out.println((int)(b*100)); 
+		
+//주사위 번호
+
+			System.out.println((int)(b*6)+1);
+		}
+
+/*---------------------------------------------*/
+
+// 과제 switch 문을 사용!!
+
+키보드로부터 숫자를 입력
+10이 입력되면 호랑이
+20이 입력되면 코끼리
+30이 입력되면 앵무새
+나머지 숫자는 야옹
+
+/*---------------------------------------------*/
+
+// 배열
+// 40개 변수를 한 번에 만든다. 
+
+		int[] apple = new int[40]; 
+
+// 변수 사용하기
+
+		apple[0] = 100;
+		apple[11] = 200;
+		apple[30] = 300;
+//		apple[40] = 400; // 39번까지만 조심하기!!
+		apple[39] = 400;
+		
+		for (int i = 0; i < 40; i++) {
+			System.out.println(i+" "+apple[i]); // 변수 사용가능
+		}
+
+/*---------------------------------------------*/
+
+// 12. 컴퓨터에게 10개의 메모리를 받아라
+
+
+		int[] apple = new int[10];
+
+/*---------------------------------------------*/
+
+		int[] apple = new int[10];
+
+// 변수 사용하기
+
+		apple[0] = 100;
+		apple[5] = 200;
+		apple[8] = 300;
+		apple[9] = 400;
+		
+		for (int i = 0; i < 10; i++) {
+			System.out.println(i+" "+apple[i]); 
+		}
+
+/*---------------------------------------------*/
+
+		int[] apple = new int[8]; //방법 1
+		int[] banana = {10,20,30,40}; //방법 2
+
+// 배열의 크기를 알 수 있다
+		
+		System.out.println(apple.length); .
+		System.out.println(banana.length);
+
+// 메모리가 4개뿐이라서 위험		
+
+/*		for (int i = 0; i < 10; i++) { 
+			System.out.println(banana[i]);
+		}*/
+
+// banana.length 직접 입력
+		
+		for (int i = 0; i < banana.length; i++) { 
+			System.out.println(banana[i]);
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
