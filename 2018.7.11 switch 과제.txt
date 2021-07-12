@@ -1,0 +1,28 @@
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Hellow {
+
+	public static void main(String[] args) {
+		System.out.println("箭磊甫 涝仿窍技夸.");
+		for (int i = 0; i < 10; i++) {
+			int input = (new Scanner(System.in)).nextInt();	
+			switch(input) {
+			case 1:
+				System.out.println("龋尔捞");
+				break;
+			case 2:
+				System.out.println("内尝府");
+				break;
+			case 3:
+				System.out.println("巨公货");
+				break;
+			default:
+				System.out.println("具克");
+				break;
+			}
+		}
+	}
+}

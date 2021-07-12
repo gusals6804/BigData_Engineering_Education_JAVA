@@ -1,0 +1,586 @@
+/*---------------------------------------------*/
+// 클래스 함수 추가
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ //클래스 선언
+	int a,b,c;  //변수필드
+	Tiger(){ //생성자
+		System.out.println("생성자 콜");
+	}
+
+// 두 개의 값에서 max값을 찾아준다.
+	int func18(int a, int b) {
+		if (a>b) {
+			return a;
+		} else {
+			return b;
+		}
+	}
+
+/*---------------------------------------------*/
+
+	int func19(int a, int b) {
+/*/		int t = (a>b) ? a : b;
+		return t;*/
+		return (a>b)?a:b;	
+	}
+
+	int func20(int a, int b) {
+		if (a>b) {
+			return a;
+		} else {
+			return b;
+		}
+// 도달하지 못하는 코드	
+// 함수는 리턴 키워드를 만나면 함수가 중단된다.		
+//		System.out.println("호랑이");
+	}
+
+/*---------------------------------------------*/
+
+// 함수는 리턴 값이 없어도 리턴 키워드는 사용할 수 있다.
+	void func21() {
+		System.out.println("호랑이");
+		return; // 함수를 중단하기 위해서
+//      System.out.println("코끼리");		
+	}
+	
+	void func22(int num) {
+		if(num<0) {
+			System.out.println("이 함수는 음수 입력 불가입니다.");
+			return;
+		}
+		
+		if(num%2==0) {
+			System.out.println("함수의 인수는 짝수입니다.");
+		}else {
+			System.out.println("함수의 인수는 홀수입니다.");
+		}
+		
+	}
+
+/*---------------------------------------------*/
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//객체 선언
+		Tiger t1 = new Tiger();
+
+		System.out.println(t1.func19(10, 30));
+	
+		t1.func22(5);
+		t1.func22(-5);
+		t1.func22(6);
+	
+	}
+}
+
+/*---------------------------------------------*/
+// 생성자의 특징
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ 
+	int a,b,c;  
+
+// 생성자의 특징
+// 1. 생성자의 정확한 명칭은 "생성자 함수" 입니다.
+// 2. 생성자 함수의 콜(호출)은 객체가 생성 될 떄(new) 단 한 번(자동) 호출 된다.	
+// 3. 생성자 함수 이름은 반드시 클래스 이름과 동일해야 한다.	
+// 4. 생성자 함수는 리턴 값을 가질 수 없다. void를 쓰지 않는다.
+// 5. 생성자 함수가 인수 전달은 할 수 있다.
+// 6. 인수 전달이 필요하다면 객체를 생성할 때 전달한다.
+// 7. 생성자를 사용하는 단 한가지 목적은 필드(변수) 초기화이다.
+	
+	Tiger(){ 
+		System.out.println("생성자 콜");
+	}
+
+/*--------------------------------------------*/
+
+// 인수를 전달 시킬 수 있다.
+/*	Tiger(int x){ 
+		System.out.println(x+"생성자");
+	}*/
+
+// 인수를 여러 개 받을 수 있다.
+/*	Tiger(int x, int y){ 
+		System.out.println(x+"생성자"+y);
+	}*/
+	
+/*	Tiger(int x, int y, int z){ 
+		System.out.println(x+"생성자"+y+z);
+	}*/
+
+// 초기 값이 x, y, z로 바뀐다.
+	Tiger(int x, int y, int z){ 
+		System.out.println(x+"생성자"+y+z);
+		a = x;
+		b = y;
+		c = z;
+	}
+
+//초기값 0 출력
+	void show() {
+		System.out.println(a+" "+b+" "+c);
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+/*		System.out.println("호랑이");
+		Tiger t1 = new Tiger(100,200,300);
+		System.out.println("코끼리");
+		
+		t1.show();*/
+		
+		Tiger t2 = new Tiger(10,20,30); //이 때 초기화 된다.
+		t2.show();
+		
+		Tiger t3 = new Tiger(150,80,30);
+		t3.show();
+		
+		t2.show(); //어디서든 볼 수 있다.
+		
+		// 원하는 만큼 볼 수 있다.
+		for (int i = 0; i < 5; i++) {
+			t3.show();
+		}
+	}
+}
+
+/*---------------------------------------------*/
+// 함수 오버로딩
+// 함수 이름은 같지만 인수 전달의 갯수가 다르다.
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ 
+	int a,b,c;  
+	Tiger(){ 
+		System.out.println("생성자 콜");
+	}
+	
+	void func01() {
+		System.out.println("인수 전달 없음");
+	}
+
+// 인수 전달을 하면 함수 이름이 같아도 된다.
+	void func01(int a) {
+		System.out.println("인수 전달 1개");
+	}
+	
+	void func01(int a, int b) {
+		System.out.println("인수 전달 2개");
+	}
+
+// 변수 이름을 바꾼다고 되는 것은 아니다.
+/*	void func01(int b) {
+		System.out.println("인수 전달 1개");
+	}*/
+	
+	void func01(int a, int b, int c) {
+		System.out.println("인수 전달 3개");
+	}
+
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		
+		t1.func01(); // 함수 1번 콜	
+		t1.func01(3); // 인수 1개
+		t1.func01(3,2); // 인수 2개
+		t1.func01(3,2,5); // 인수 3개
+		
+	}
+}
+
+/*---------------------------------------------*/
+// 클래스 생성자 인수를 초기화 해서 출력
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ 
+	
+	int a,b,c;  
+	Tiger(){ 
+		System.out.println("생성자 콜");
+		a = 10;
+		b = 20;
+		c = 30;
+	}
+
+// 생성자 출력 함수
+	void output() {
+		System.out.println(a+" "+b+" "+c);
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		t1.output();
+		
+	}
+}
+
+/*---------------------------------------------*/
+// 생성자 오버로딩
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ 
+	
+	int a,b,c;  
+	Tiger(){ 
+		System.out.println("생성자 콜");
+		a = 10;
+		b = 20;
+		c = 30;
+	}
+	
+	
+	Tiger(int x) {		
+		System.out.println("생성자 콜");
+		a = x;	
+	}
+	
+	Tiger(int x, int y, int z) {
+		System.out.println("생성자 콜");
+		a = x;
+		b = y;
+		c = z;
+	}
+	
+	void output() {
+		System.out.println(a+" "+b+" "+c);
+	}
+	
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		t1.output();
+		
+		Tiger t2 = new Tiger(99);
+		t2.output();
+		
+		Tiger t3 = new Tiger(100,200,333);
+		t3.output();
+		
+	}
+}
+
+/*---------------------------------------------*/
+//this 사용법
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ 
+	
+	int a,b,c;  
+	Tiger(){ 
+		System.out.println("생성자 콜");
+	}
+	
+	Tiger(int num){ 
+		System.out.println(num);
+	}
+	
+// 한 개여도 타입이 다르면 된다.	
+	Tiger(String str){ 
+		System.out.println(str);
+	}
+
+/*	Tiger(int x, int y, int z){
+		a = x;
+		b = y;
+		c = z;
+	}*/
+
+// 전달 인수와 같은면 this를 사용한다.
+	Tiger(int a, int b, int c){
+		this.a = a;
+		this.b = b;
+		this.c = c;
+	}
+	
+	void show() {
+		System.out.println(a+" "+b+" "+c);
+	}
+	
+	void func01() {
+		int a; // 함수 안에 a가 생긴다.
+		a = 1000;
+	} // 여기서 int a가 사라진다.
+
+	void func02() {
+		a = 2000;
+	}
+
+	void func03() {
+		int a;
+		this.a = 3000; //클래스에 있는 a에 3000
+	}
+	
+	void func04(int a) {
+		a = 4000;
+	}
+	
+	void func05(int a) {
+		this.a = 5000;
+	}
+
+	void func06(int a) {
+		this.a = a;
+	}
+
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		Tiger t2 = new Tiger(10);
+		Tiger t3 = new Tiger("호랑이");
+		
+		t3.show();
+		t3.func01(); // 아무런 결과가 없다.
+		t3.show(); // 그대로 0 0 0
+		
+		t3.func02();
+		t3.show(); // 2000 0 0
+
+		t3.func03();
+		t3.show(); // 3000 0 0
+		
+		t3.func04(99);
+		t3.show(); // 3000 0 0 
+		
+		t3.func05(99);
+		t3.show();
+
+		t3.func06(9999);
+		t3.show();
+		
+		Tiger t4 = new Tiger(30,40,50);
+		t4.show();
+		
+	}
+}
+
+/*---------------------------------------------*/
+// 함수에서 함수 사용
+// 캡슐화
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ 
+	
+	int a,b,c;  
+	Tiger(){ 
+		System.out.println("생성자 콜");
+	}
+	
+	void func01() {
+		System.out.println("호랑이");
+	}
+	
+// 함수 안에 함수 사용
+	void func02() {
+		System.out.println("코끼리");
+		func01(); // 함수 1번의 호랑이 출력 //this 사용 안해도 된다.
+		System.out.println("달팽이");
+	}
+
+// 재귀 호출
+	void func03() {
+		System.out.println("낙타");
+//		func03(); // 자신이 자신을 부를 수 없다.
+	}
+
+// 에러 서로가 서로를 부르면 안된다.	
+/*	void func04() {
+		func05();
+	}
+
+	void func05() {
+		func04();
+	}*/
+
+// private 프라이빗
+// 클래스를 벗어나서는 사용 못한다.
+// 정보를 은닉했다.
+	private void func06() {
+		System.out.println("목 감기를 치료합니다.");
+	}
+	
+	void func07() {
+		System.out.println("콧물을 치료합니다.");
+	}
+	
+	void func08() {
+		System.out.println("두통을 치료합니다.");
+	}
+
+// 캡슐화
+// 함수로 한 번에 만드는 것이 좋다.
+	void func09() {
+		System.out.println("종합 감기약");
+		func06();
+		func07();
+		func08();			
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+
+//		t1.func01();
+//		t1.func02();
+//		t1.func03();
+//		t1.func04();
+//		t1.func09();
+//		t1.func06(); // private를 쓰면 에러가 생긴다. 
+		
+	}
+}
+
+/*---------------------------------------------*/
+//String
+
+		// 간편하게 쓸 때
+		String s1 = "호랑이";
+		
+		// String은 클래스다.
+		// 표준 클래스다.
+		// 인수 전달이 없는 생성자
+		String s2 = new String();
+		
+		// 생성자에서 인수 전달을 한 개 받고 있다.
+		String s3 = new String("코끼리");
+		
+		String t2 = new String();
+		String t3 = new String("코끼리");
+		System.out.println(s3);
+
+/*---------------------------------------------*/
+// 배열
+
+		int[] ar = new int[7];
+		int[] br = {10,20,30,40};
+		for (int i = 0; i < ar.length; i++) {
+			System.out.print(ar[i]+" ");
+		}
+		System.out.println();
+		for (int i = 0; i < br.length; i++) {
+			System.out.print(br[i]+" ");
+		}
+
+/*---------------------------------------------*/
+// for each문 배열을 쓸 때 좋다
+		
+		for (int i : ar) {
+			System.out.print(i+" ");
+		}
+		
+		System.out.println();
+		
+		for (int i : br) {
+			System.out.print(i+" ");
+		}
+
+/*---------------------------------------------*/
+// 생성자 안에서 다른 생성자를 콜할 때
+// this()가 제일 위에 반드시 첫 줄에 써야한다.
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ 
+	
+	int a,b,c;  
+	Tiger(){ 
+		System.out.println("호랑이");
+	}
+
+	Tiger(int a){ 
+		this();
+		System.out.println("코끼리");
+	}
+	
+	Tiger(int a, int b){ 
+		this(30); // 코끼리도 출력
+		System.out.println("앵무새");
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger(10,20);
+		
+	}
+}
+
+/*---------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

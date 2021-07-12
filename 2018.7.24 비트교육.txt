@@ -1,0 +1,233 @@
+/*-----------------------------------------------------------------------------*/
+// 컬렉션
+// linkedlist를 통해 CRUD하는 것이다.
+// <> 이것이 컨테이너: 동일한 물건만 담는다.
+// create
+
+객체 생성
+LinkedList<Integer> li = new LinkedList<Integer>();
+
+개수 확인
+System.out.println(li.size());
+
+내용 확인
+System.out.println(li+" ");
+
+데이터 추가 C add
+li.add(3,777);
+
+데이터 읽는 것 R get
+int num = li.get(i);
+
+데이터 갱신 U set
+li.set(2, 888);
+
+데이터 제거 D remove
+li.remove(4);
+
+package PACK01;
+
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.swing.plaf.SliderUI;
+
+public class Hello {
+	public static void main(String[] args)/*throws Exception*/{
+
+		LinkedList<Integer> li = new LinkedList<Integer>();
+		// 데이터를 고리로 연결한다.
+		// <> : 컨테이너 한 가지만 담는다. 안에 관리되는 대상 입력
+		// li는 객체 이름이고 관리자
+		// 컨테이너 안에는 클래스만 넣을 수 있다.
+		System.out.println(li.size()); // 지금은 0개		
+		
+		li.add(30); // insert
+		System.out.println(li.size()); // 지금은 1개
+		
+		for (int i = 0; i < 10; i++) {
+			li.add(i*10);
+		}
+		System.out.println(li.size()); // 지금은 11개
+		
+		// 데이터 내용을 보는 두 가지 방법
+/*		System.out.println(li); // 데이터 내용을 볼 때
+		
+		for (int i = 0; i < li.size(); i++) { // li.size만큼 돌린다.
+			int num = li.get(i); // 정보를 볼 수 있다.
+			System.out.println(num);
+			System.out.println(num*10); // 변형이 가능
+		}
+		System.out.println(li.size());*/
+		
+		for (Integer a : li) {
+			System.out.print(a+" "); // a를 출력한다.
+		} // 3번째가 제일 선호 된다.
+		System.out.println();
+		
+		// create insert(add)
+		li.add(3,777); //오버로딩 때문에 여러개를 넣을 수 있다.
+		// li.add(3,555); // 첫번째 인수는 데이터가 들어가는 위치
+		// li.add(15,666); 갯수를 넘길 수 없다.
+		System.out.println(li+" ");
+		
+		// delete 
+		li.remove(4); //제거 하다
+		System.out.println(li+" ");
+	
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+		// 찾아서 제거하기
+		for (int i = 0; i < li.size(); i++) {
+			int num = li.get(i);
+			if(num==777) {
+				li.remove(i);
+				break;
+			}
+		}
+		System.out.println(li+" ");
+		
+		// 30의 배수만 삭제하는 프로그램
+		// int size = li.size(); // 고정 시켜준다.
+		// i=0 size=5 n=3 else i=1,
+		// i=1 size=5 n=2 remove i=1,
+		// i=1 size=4 n=7 else i=2,
+		// i=2 size=4 n=6 remove i=2,
+		// i=2 size=3 n=9 else i=3 break;
+		for (int i = 0; i < li.size();) {
+			int n = li.get(i);
+			if(n%30==0) {
+				li.remove(i);
+			} else {
+				i++;
+			}
+		}
+		System.out.println(li+" ");
+
+/*-----------------------------------------------------------------------------*/
+
+		// 지시자
+		// hasNext: 뒤에 있는지
+		// next: 한 칸 이동
+		Iterator<Integer> it = li.iterator();
+		System.out.println(li.size());
+		while(it.hasNext()) { // 데이터가 있는지 없는지
+			int n = it.next(); // 다음으로 넘어간다.
+			if(n%30==0) {
+				it.remove();
+			}
+			System.out.println("호랑이"+" "+n);
+		}
+		System.out.println(li);
+		
+		// set은 데이터 갱신(update)
+		li.set(2, 888);
+		System.out.println(li);
+
+/*-----------------------------------------------------------------------------*/
+// string CRUD
+
+		LinkedList<String> li = new LinkedList<>();
+		int[] ar = {10,20,30};
+		String[] br = {"레드","그린","블루"};
+		String[] cr = {"호랑이","코끼리","앵무새","사자"};
+		for (int i = 0; i < 10; i++) {
+			int r1 = (new Random()).nextInt(3);
+			int r2 = (new Random()).nextInt(4);
+			System.out.println(r1+" "+r2);
+			String name = br[r1]+cr[r2]; 
+			System.out.println(name);
+			li.add(name);
+		}
+		System.out.println(li);
+		
+		for (int i = 0; i < li.size(); i++) {
+			String s = li.get(i);
+			System.out.println(i+"번 "+s);
+		}
+		
+		li.set(3, "무지개호랑이");
+		System.out.println(li);
+		
+		li.remove(3);
+		System.out.println(li.size());
+		System.out.println(li);
+
+/*-----------------------------------------------------------------------------*/
+// 생성자 CRUD
+
+package PACK01;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.swing.plaf.SliderUI;
+
+class Animal{
+	int age;
+	String name;
+	
+	// 생성자 제널네이트
+	// source Generate constructor
+	public Animal(int age, String name) {
+		super();
+		this.age = age;
+		this.name = name;
+	}
+	
+	void showInfo() {
+		System.out.println(age+" "+name);
+	}
+	
+}
+
+public class Hello {
+	public static void main(String[] args)/*throws Exception*/{
+
+		LinkedList<Animal> li = new LinkedList<>();
+		Animal a1 = new Animal(10,"호랑이");
+		
+		li.add(a1);
+		li.add(new Animal(20,"고양이"));
+		
+		//System.out.println(li);// 오류
+		
+		for (int i = 0; i < 5; i++) {
+			li.add(new Animal(30+(i*10),"코끼리"));
+		}
+		
+		// 이렇게 출력해야한다.
+		for (Animal a : li) {
+			//System.out.println(a.age+" "+a.name);
+			a.showInfo();
+		}
+		System.out.println("----------");
+		
+		Animal a2 = li.get(3);
+		//System.out.println(a2.age+" "+a2.name);
+		a2.showInfo();
+		System.out.println("----------");
+		
+		li.set(5, new Animal(99,"원숭이"));
+		for (Animal a : li) {
+			//System.out.println(a.age+" "+a.name);
+			a.showInfo();
+		}
+		System.out.println("----------");
+
+		li.remove(5);
+		for (Animal a : li) {
+			//System.out.println(a.age+" "+a.name);
+			a.showInfo();
+		}
+		
+	}
+}
+

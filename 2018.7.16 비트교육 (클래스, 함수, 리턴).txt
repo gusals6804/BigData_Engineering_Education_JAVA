@@ -1,0 +1,357 @@
+
+/*-------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ //클래스 선언
+	int a,b,c;  //변수필드
+	Tiger(){ //생성자
+		System.out.println("생성자 콜");
+	}
+	void func01(){
+		System.out.println("함수 1번이 콜 되었습니다.");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		t1.func01();
+		
+	}
+}
+
+/*-------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ //클래스 선언
+	int a,b,c;  //변수필드
+	
+	Tiger(){ //생성자
+		System.out.println("생성자 콜");
+	}
+
+/*-------------------------------------------------------------*/
+	
+	void func01(){
+		System.out.println("함수 1번이 콜 되었습니다.");
+	}
+	
+
+/*-------------------------------------------------------------*/
+// 5단 출력
+
+	void func02() {
+		for (int i = 0; i < 10; i++) {
+			System.out.println(5+" * "+i+" = "+(5*i));
+		}
+	}
+
+/*-------------------------------------------------------------*/
+// 10까지의 합
+	
+	void func03() {
+		int s = 0;
+		for (int i = 1; i <= 10; i++) {
+			s = s + i;
+		}
+		System.out.println(s);
+	}
+
+/*-------------------------------------------------------------*/
+// 우박 수 구하기
+	
+	void func04() {	
+		int s = 35;
+		System.out.println(s+"의 우박수");
+		System.out.println("----------------");
+		
+		while(true) {
+			System.out.println(s);
+			
+			if(s==1) {
+				System.out.println("우박수 출력 완료");
+				break;
+			}
+			
+/*			if(s%2==0) {
+				s = s/2;
+			}else {
+				s = 3 * s + 1;
+			}*/
+			
+			s = (s%2==0) ? (s/2) : (3*s + 1 );
+			
+		}
+}
+
+/*-------------------------------------------------------------*/
+// int타입의 변수 7개를 만드세요.
+// 0 ~ 10 사이의 숫자를 랜덤으로 뽑아서 배열에 넣으세요.
+// 배열안에 있는 숫자를 모두 출력하세요.
+// 배열안의 숫자의 합을 구하세요.
+
+// 배열은 다 따로 for문을 써야 한다.
+	void func05() {
+		
+		int ar[] = new int[7];
+		System.out.println("랜덤 수");
+
+// 데이터 초기화		
+		for (int i = 0; i < ar.length; i++) {
+			ar[i] = (new Random()).nextInt(10)
+		}
+		
+// 프리젠테이션 로직
+		for (int j = 0; j < ar.length; j++) {
+			System.out.println(ar[i]+" ");
+		}
+
+//	비즈니스 로직	
+		int s = 0;
+		for (int i = 0; i < ar.length; i++) {
+			s = s + ar[i];
+		}
+		System.out.println("합:"+s);
+		
+	}
+}
+
+/*-------------------------------------------------------------*/
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		for (int i = 0; i < 3; i++) {
+			t1.func01();			
+		}
+		
+		t1.func02();
+		t1.func03();
+		t1.func01();
+		t1.func03();
+		t1.func04();
+		t1.func05();
+
+	}
+}
+
+/*-------------------------------------------------------------*/
+// 인수 전달
+
+// 함수에 변수를 사용한다.	
+	void func06(int num) {
+		System.out.println(num);
+	}
+// 같은 num이라는 변수를 사용할 수 있다. 
+	void func07(int num) {
+		for (int i = 0; i < 10; i++) {
+			System.out.println(num+" * "+i+" = "+num*i);
+		}
+	}
+	void func08(int num) {
+		int s = 0;
+		for (int i = 1; i <= num; i++) {
+			s = s + i;
+		}
+		System.out.println(s);
+	}
+	void func09(int num) {
+		int s = num;
+		System.out.println(s+"의 우박수");
+		System.out.println("-------------------");
+		
+		while(true) {
+			System.out.println(s);
+			
+			if(s==1) {
+				System.out.println("우박 수 출력 완료");
+				break;
+			}
+			
+			if(s%2==0) {
+				s = s/2;
+			}else {
+				s = s * 3 +1;
+			}
+			
+		}
+	}
+
+/*-------------------------------------------------------------*/
+// 변수 여러개 사용
+
+	void func10(int a, int b) { // int a, b 이렇게 하면 안된다.
+		System.out.println(a+" "+b);
+	}
+	void func11(char a , int b, float c, String d) {
+		System.out.println(a+" "+b+" "+c+" "+d);
+	}
+
+/*-------------------------------------------------------------*/
+// a의 b제곱 만큼 구하는 함수
+	void func12(int a, int b) {
+		int s = 1;
+		for (int i = 0; i < b; i++) {
+			s = s * a;
+		}
+		System.out.println(s);
+	}
+
+/*-------------------------------------------------------------*/
+// 문자열과 함께 사용한 함수
+	void func13(int num, String name, String sound) {
+		System.out.print(name+""+"가");
+		for (int i = 0; i < num; i++) {
+			System.out.print(" "+sound+" ");
+		}
+		//System.out.println("울고있습니다.");
+		System.out.println("날아갑니다.");
+	}
+
+/*-------------------------------------------------------------*/
+// 리턴 값
+
+	int func14() {
+		return 100;
+	}
+
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//객체 선언
+		Tiger t1 = new Tiger();
+
+
+		// 리턴을 사용하는 방법(1)
+		int a = t1.func14(); // 이렇게 받는다.
+		System.out.println(a); // 리턴 값을 받는다.
+		
+		// 리턴을 사용하는 방법(2)
+		t1.func14(); //안 받으면 사라진다.
+		
+		// 리턴을 사용하는 방법(3)
+		System.out.println(t1.func14()); //출력 코드에 연결
+
+	}
+}
+
+/*-------------------------------------------------------------*/
+
+	 void func15() {
+		 
+	 }
+
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//객체 선언
+		Tiger t1 = new Tiger();
+
+		//리턴 없을 때는 사용하면 안된다.
+		// int b = t1.func15; 
+		// System.out.println(t1.func15);
+		
+	}
+}
+
+/*-------------------------------------------------------------*/
+// 리턴을 하고 인수도 받는다.
+	
+	int func16(int a, int b) {
+		int c = a + b;
+		return c;
+	}
+	
+	int func17(int a, int b) {
+		return a + b; // 바로 더할 수 있다.
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//객체 선언
+		Tiger t1 = new Tiger();
+
+		// 리턴과 인수 값 사용
+		System.out.println(t1.func16(10, 20)); 
+		
+		int ccc = t1.func16(10, 20);
+		System.out.println(ccc);
+		
+		System.out.println(t1.func17(10, 20));
+		
+		int d = t1.func17(10, 20);
+		System.out.println(d);
+		
+	}
+}
+
+/*-------------------------------------------------------------*/
+// 두 개의 값에서 max값을 찾아준다.
+	
+	int func18(int a, int b) {
+		if (a>b) {
+			return a;
+		} else {
+			return b;
+		}
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//객체 선언
+		Tiger t1 = new Tiger();
+
+		System.out.println(t1.func18(10, 20));
+		System.out.println(t1.func18(30, 10));
+		
+// 변수를 사용할 때
+		
+		int n1 = 30, n2 = 15, n3 = 40, n4 = 13;
+		System.out.println(t1.func18(t1.func18(n1, n2), t1.func18(n3, n4)));		
+		
+		int n5 = t1.func18(n1, n2);
+		int n6 = t1.func18(n3, n4);
+		int n7 = t1.func18(n5, n6);
+		System.out.println(n5+" "+n6+" "+n7);
+		System.out.println(n7);
+	}
+}
+
+/*-------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

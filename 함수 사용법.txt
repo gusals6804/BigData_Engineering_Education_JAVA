@@ -1,0 +1,325 @@
+/* int rn = (new Random()).nextInt(100);
+   int input = (new Scanner(System.in)).nextInt();*/ 
+
+/*class Banana{ 
+	int a,b,c; 
+	Banana(){ 
+		System.out.println("생성자 콜");
+	} */
+
+//Banana t1 = new Banana(); 객체선언 
+//int[] apple = new int[7]; 배열 만들기
+
+// 클래스 이름의 첫 글자는 대문자, 마지막은 항상 세미콜론; 
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{ //클래스 선언
+	int a,b,c;  //변수필드
+	Tiger(){ //생성자
+		System.out.println("생성자 콜");
+	}
+	void func01(){
+		System.out.println("함수 1번이 콜 되었습니다.");
+	}
+
+// 5단 출력
+	void func02() {
+		for (int i = 0; i < 10; i++) {
+			System.out.println(5+" * "+i+" = "+5*i);
+		}
+	}
+
+// 1~10까지의 합
+	void func03() {
+		int s = 0;
+		for (int i = 1; i <= 10; i++) {
+			s = s + i;
+		}
+		System.out.println(s);
+	}
+
+// 35의 우박수를 구하기
+	void func04() {	
+		int s = 35;
+		System.out.println(s+"의 우박수");
+		System.out.println("-------------------");
+		
+		while(true) {
+			System.out.println(s);
+			
+			if(s==1) {
+				System.out.println("우박 수 출력 완료");
+				break;
+			}
+			
+			if(s%2==0) {
+				s = s/2;
+			}else {
+				s = s * 3 +1;
+			}
+			
+		}
+	}
+
+// 배열 7개를 만들고 1~10까지 랜덤 수를 넣어서 합을 구하여라.
+// 배열은 다 따로 for문을 써야 한다.
+	void func05() {
+		
+		int ar[] = new int[7];
+		System.out.println("랜덤 수");
+
+// 데이터 초기화		
+		for (int i = 0; i < ar.length; i++) {
+			ar[i] = (new Random()).nextInt(10);
+		}
+		
+// 프리젠테이션 로직
+		for (int i = 0; i < ar.length; i++) {
+			System.out.println(ar[i]+" ");
+		}
+
+//	비즈니스 로직	
+		int s = 0;
+		for (int i = 0; i < ar.length; i++) {
+			s = s + ar[i];
+		}
+		System.out.println("합:"+s);
+		
+	}
+
+// 함수에 변수를 사용한다.	
+	void func06(int num) {
+		System.out.println(num);
+	}
+// 같은 num이라는 변수를 사용할 수 있다. 
+	void func07(int num) {
+		for (int i = 0; i < 10; i++) {
+			System.out.println(num+" * "+i+" = "+num*i);
+		}
+	}
+	void func08(int num) {
+		int s = 0;
+		for (int i = 1; i <= num; i++) {
+			s = s + i;
+		}
+		System.out.println(s);
+	}
+	void func09(int num) {
+		int s = num;
+		System.out.println(s+"의 우박수");
+		System.out.println("-------------------");
+		
+		while(true) {
+			System.out.println(s);
+			
+			if(s==1) {
+				System.out.println("우박 수 출력 완료");
+				break;
+			}
+			
+			if(s%2==0) {
+				s = s/2;
+			}else {
+				s = s * 3 +1;
+			}
+			
+		}
+	}
+
+// 변수 여러 개 사용
+	void func10(int a, int b) { // int a, b 이렇게 하면 안된다.
+		System.out.println(a+" "+b);
+	}
+	void func11(char a , int b, float c, String d) {
+		System.out.println(a+" "+b+" "+c+" "+d);
+	}
+
+// a의 b제곱 만큼 구하는 함수
+	void func12(int a, int b) {
+		int s = 1;
+		for (int i = 0; i < b; i++) {
+			s = s * a;
+		}
+		System.out.println(s);
+	}
+
+// 문자열과 함께 사용한 함수
+	void func13(int num, String name, String sound) {
+		System.out.print(name+""+"가");
+		for (int i = 0; i < num; i++) {
+			System.out.print(" "+sound+" ");
+		}
+		//System.out.println("울고있습니다.");
+		System.out.println("날아갑니다.");
+	}
+
+// 리턴 값 반드시 int 사용
+// 반드시 return을 써야한다.	
+// 한 개만 리턴할 수 있다.
+	int func14() {
+		return 100;
+	}
+	void func15() {
+		 
+	 }
+
+// 리턴을 하고 인수도 받는다.
+	int func16(int a, int b) {
+		int c = a + b;
+		return c;
+	}
+	int func17(int a, int b) {
+		return a + b; // 바로 더할 수 있다.
+	}
+
+// 두 개의 값에서 max값을 찾아준다.
+	int func18(int a, int b) {
+		if (a>b) {
+			return a;
+		} else {
+			return b;
+		}
+	}
+
+	int func19(int a, int b) {
+/*/		int t = (a>b) ? a : b;
+		return t;*/
+		return (a>b) ? a : b;	
+	}
+	
+	int func20(int a, int b) {
+		if (a>b) {
+			return a;
+		} else {
+			return b;
+		}
+// 도달하지 못하는 코드	
+// 함수는 리턴 키워드를 만나면 함수가 중단된다.		
+//		System.out.println("호랑이");
+	}
+
+// 함수는 리턴 값이 없어도 리턴 키워드는 사용할 수 있다.
+	void func21() {
+		System.out.println("호랑이");
+		return; // 함수를 중단하기 위해서
+//      System.out.println("코끼리");		
+	}
+	
+	void func22(int num) {
+		if(num<0) {
+			System.out.println("이 함수는 음수 입력 불가입니다.");
+			return;
+		}
+		
+		if(num%2==0) {
+			System.out.println("함수의 인수는 짝수입니다.");
+		}else {
+			System.out.println("함수의 인수는 홀수입니다.");
+		}
+		
+	}
+
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//객체 선언
+		Tiger t1 = new Tiger();
+		
+/*		for (int i = 0; i < 3; i++) {
+			t1.func01();			
+		}
+		
+		t1.func02();
+		t1.func03();
+		t1.func01();
+		t1.func03();
+		t1.func04();
+		t1.func05();
+		t1.func06(3); // 숫자를 반드시 적어줘야한다.
+		t1.func06(10); 
+		t1.func07(8); 
+		t1.func08(10000);
+		t1.func08(100);
+		t1.func08(1000);
+		t1.func08(10);
+		t1.func08(1239);
+		t1.func08(1014);
+		t1.func09(3427); 
+		t1.func09(100); 
+		t1.func10(10, 20); 
+		t1.func11('q', 100, 5.86f, "호랑이"); 
+		t1.func12(3, 4);
+		t1.func12(2, 8);
+		t1.func12(2, 20); 
+		t1.func13(5, "호랑이", "어흥"); 
+		t1.func13(5, "고양이", "야옹"); 
+		t1.func13(10, "어린아이", "엉"); 
+		t1.func13(5, "비둘기", "훨훨"); 
+		
+		// 리턴을 사용하는 방법(1)
+		int a = t1.func14(); // 이렇게 받는다.
+		System.out.println(a); // 리턴 값을 받는다.
+		// 리턴을 사용하는 방법(2)
+		t1.func14(); //안 받으면 사라진다.
+		// 리턴을 사용하는 방법(3)
+		System.out.println(t1.func14()); //출력 코드에 연결 */
+		
+		//리턴 없을 때는 사용하면 안된다.
+		// int b = t1.func15; 
+		// System.out.println(t1.func15);
+		
+		// 리턴과 인수 값 사용
+/*		System.out.println(t1.func16(10, 20)); 
+		
+		int ccc = t1.func16(10, 20);
+		System.out.println(ccc);
+		
+		System.out.println(t1.func17(10, 20));
+		
+		int d = t1.func17(10, 20);
+		System.out.println(d);*/
+		
+/*		System.out.println(t1.func18(10, 20));
+		System.out.println(t1.func18(30, 10));*/
+		
+		// 변수를 사용할 때
+/*		int n1 = 30, n2 = 15, n3 = 40, n4 = 13;
+//		System.out.println(t1.func18(t1.func18(n1, n2), t1.func18(n3, n4)));
+		int n5 = t1.func18(n1, n2);
+		int n6 = t1.func18(n3, n4);
+		int n7 = t1.func18(n5, n6);
+		System.out.println(n5+" "+n6+" "+n7);
+		System.out.println(n7);*/
+		
+//		System.out.println(t1.func19(10, 30));
+		
+		t1.func22(5);
+		t1.func22(-5);
+		t1.func22(6);
+		
+	}
+}
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

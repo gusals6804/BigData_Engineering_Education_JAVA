@@ -1,0 +1,1065 @@
+
+/*-------------------------------------------------------------------------*/
+// 1. 자바 환경 설정
+
+java 설치 확인
+
+- 윈도우 검색 창: cmd (콘솔 창)
+  javac -version
+
+1).java 설치
+
+www.oracle.com
+menu창 - developers - downloads - java 
+
+64비트 확인
+
+java(jdk) for developers
+
+Java SE 8u171/ 8u172 - jdk download
+
+라이센스 동의 버튼 체크
+
+x86-32비트
+
+모두 다 next
+
+-환경변수 설정-
+
+내 pc - 속성 - 고급 시스템 설정 - 환경 변수 - 아래 쪽 새로 만들기 
+- 변수 이름: JAVA_HOME 
+- 변수 값: C드라이브 프로그램 파일 JAVA (C:\Program Files\Java\jdk1.8.0_171)
+- 시스템 변수 Path 편집 - 새로 만들기 - %JAVA_HOME%\bin - 맨 위로 이동
+
+그리고 cmd창에서 버전 확인(새로 열기)
+javac -version
+
+/*-------------------------------------------------------------------------*/
+
+2). 툴 설치
+
+http://www.eclipse.org/
+
+download
+
+주황색 버튼 아래
+download packages
+
+Eclipse IDE for Java EE Developers 비트 확인 - download - 압축 풀기
+
+바탕화면에 바로 가기 만들기
+
+내 폴더로 위치 지정
+
+/*-------------------------------------------------------------------------*/
+
+3). 이클립스 실행
+
+오른 쪽 끝에서 두번째 open persepetive - java 추가
+
+file - new - java project - prj01
+
+x창 다 끄기
+
+window- show view - project explorer : 프로젝트 관리
+
+IDE: 통합개발환경
+
+prj01 오른쪽 버튼 - new - class
+
+f1 f2 f3 - package안에 파일 package들을 묶어서 project
+
+Package : PACK01
+Name : Hello
+
+public static void main 체크하기
+
+finish
+
+/*-------------------------------------------------------------------------*/
+//2. 이클립스 단축키
+		
+컴파일 및 실행		: Ctrl + F11
+복사 붙여넣기		: Ctrl + C, Ctrl + V 
+되돌리기			: Ctrl + Z - 과거, Ctrl + Y - 현재
+한 줄 삭제		: Ctrl + D
+코드 줄 맞추기		: Ctrl + I
+주석 처리			: Ctrl + Shift + /, Ctrl + shift + \ - 주석 해제	
+블럭 복사			: Ctrl + Alt + 방향키
+블럭 이동			: Alt + 방향키
+폰트 크기 조절		: Ctrl +, - 
+변수 일괄 조정		: Shift + Alt + R
+여러 줄을 한 줄로		: Ctrl + Alt + J
+부분 캡쳐			: Shift + Alt + A
+상속과 함수 보기		: 커서를 대고 F4
+
+/*--------------------------------------------------------------------------*/
+// 클래스와 인터페이스를 만들 수 있는 경우의 수
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+1)
+class A{
+	
+}
+
+2)
+interface B{
+	
+}
+
+3)
+// 자: class 부: class
+
+class C extends A{ 
+	
+}
+
+4)
+// 자: class 부: interface
+
+class D implements B{ 
+	
+}
+
+5)
+// 자: interface 부: interface
+
+interface E extends B{ 
+	
+}
+
+6)
+// 자: interface 부: class 는 안된다.
+
+7)
+// 자식 class가 다중 부모 class를 가질 수 없다.
+
+8)
+// 자식 class가 다중 interface는 가질 수 있다.
+
+9)
+// 자식 class가 부모 class와 부모 interface를 둘 다 가질 수 있다.
+
+10)
+(중첩 클래스)
+// class 안에 class를 넣을 수 있다. 
+
+11) 대장
+// class 안에 interface를 넣을 수 있다.
+
+12)
+// interface 안에 class를 넣을 수 있다.
+
+13) 
+// interface 안에 interface를 넣을 수 있다.
+
+14) 
+// 자식 class가 부모 class 한 개와 부모 interface를 여러 개 가질 수 있다.
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+	}
+}
+
+/*--------------------------------------------------------------------------*/
+// 3. 랜덤으로 숫자 받기
+
+package PACK;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		int rn = (new Random()).nextInt(100);
+		System.out.println(rn);
+		System.out.println("------------------");
+
+/*--------------------------------------------------------------------------*/
+// 4. 키보드로 부터 숫자를 입력 받기
+
+		System.out.println("숫자를 입력하세요");
+		int input = (new Scanner(System.in)).nextInt();
+		System.out.println(input);
+		
+	}
+	
+}
+
+/*--------------------------------------------------------------------------*/
+// 5. 표준타입(소문자), 클래스(첫 글자가 대문자)
+		
+		// 변수 선언과 동시에 초기화
+		int a = 10;
+		
+		int b; // 변수 선언
+		b = 20; // 처음에는 초기화, 변수에 값을 대입
+		b = 30; // 값을 대입
+		// b : 변수, = : 대입 연산, 30 : liternal 상수
+		
+		// 8가지 변수 타입
+		byte c1 = 10;		// 1byte 8 bit
+		short c2 = 20;		// 2 16
+		char c3 = 'a';		// 2 16
+		int c4 = 30;		// 4 32
+		long c5 = 40;		// 8 64
+		float c6 = 3.14f;	// 4 32
+		double c7 = 3.14;	// 8 64
+		boolean c8 = true;	// 1 8
+
+/*--------------------------------------------------------------------------*/
+// 6. 표준 클래스
+		
+		String s1; // 객체 선언, 객체 생성은 하지 않았다.
+		
+		String s2; // 객체 선언
+		s2 = "호랑이1"; // 객체 생성
+		
+		// 객체 선언과 동시에 객체가 생성 되었다.
+		String s3 = "호랑이2"; 
+		
+		// 객체 선언과 생성이 되었다. 초기 값은 없다.
+		String s4 = new String(); 
+		
+		// 객체 선언과 생성을 하고 초기 값을 주었다. 
+		String s5 = new String("호랑이3");
+
+		// 객체 선언과 생성을 하고 초기 값은 없다.
+		String s6 = "";
+
+		// 객체 선언을 하고 없는 것을 확실히 알려준다.
+		// null은 객체를 죽이는 것이다.
+		String s7 = null;
+		
+		// 표준 클래스의 대표적인 종류
+		String a1;
+		Thread a2;
+		Integer a3;
+		Random a4;
+		// Random cannot be resolved to a type
+		// import 하기
+		// 오류 창은 F2를 누르면 크게 볼 수 있다.
+		Math a5;
+		Scanner a6;
+		Runnable a7;
+		LinkedList<Integer> a8;
+		Exception a9;
+		
+		// 객체 생성의 정석 코드
+		Random random = new Random(); 
+		// 토끼 a = new 토끼(); 
+		// 클래스 객체 = 메모리 생성 생성자 콜
+
+/*--------------------------------------------------------------------------*/
+// 7. 모든 타입의 최대값과 최소값
+		
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Integer.MIN_VALUE);
+
+		// 숫자와 문자열의 변화
+		// 숫자를 문자로 // Integer.toString
+		int n1 = 1234;
+		String s1 = Integer.toString(n1);
+		System.out.println(s1+123);
+
+		// 이렇게 간단하게 사용할 수도 있다.
+		String s2 = ""+n1; // 문자열 + 숫자 = 문자열
+		System.out.println(s2+123);
+		
+		// 문자를 숫자로 // Integer.parseInt
+		String s3 = "5678";
+		int n2 = Integer.parseInt(s3);
+		System.out.println(n2+123);
+
+/*--------------------------------------------------------------------------*/
+// 8. 산술 연산
+		
+		int a = 19, b = 3;
+		int c;
+		
+		c = a + b;
+		System.out.println(c);
+		
+		c = a - b;
+		System.out.println(c);
+		
+		c = a * b;
+		System.out.println(c);
+		
+		c = a / b; // 몫
+		System.out.println(c);
+		
+		c = a % b; // 나머지
+		System.out.println(c);
+		
+		int d = 3, e = 4;
+		// 이렇게 하면 보기가 좋다.
+		System.out.println(d+" "+e); 
+		
+		d = d + e; // d += e; 와 똑같다.
+		System.out.println(d+" "+e); 
+		
+		int f = 3, g = 4;
+		f = f * g; // f *= g
+		System.out.println(f+" "+g);
+		
+		// 복합 연산에서는 먼저 할 계산을 ()로 묶어준다.
+		int h1 = 3, h2 = 4, h3 = 5, h4, h5, h6;
+		h4 = (h1 + h2) * h3;
+		System.out.println(h4);
+		
+		h5 = h1 + (h2 * h3);
+		System.out.println(h5);
+		
+		h6 = h1 + h2 * h3; // 곱하기와 나누기가 우선 순위가 더 높다.
+		System.out.println(h6);
+
+/*--------------------------------------------------------------------------*/
+// 9. ++연산자와 대입
+		
+		int a1 = 10, a2 = 10, a3 = 10, a4 = 10, a5 = 0, a6 = 0;
+		
+		a1++;
+		System.out.println(a1);
+		
+		++a2;
+		System.out.println(a2);
+		
+		System.out.println(a3+" "+a5); // 초기 값이 없으면 오류
+		
+		a5 = a3++; // 대입하고 증가 순서
+		System.out.println(a3+" "+a5); 		
+		
+		System.out.println(a4+" "+a6);
+		
+		a6 = ++a4; // 증가하고 대입 순서
+		System.out.println(a4+" "+a6);
+
+/*--------------------------------------------------------------------------*/
+// 10. 관계 비교 연산
+		
+		boolean a, b, c;
+		
+		a = 3 > 5;
+		b = 3 < 5;
+		c = 5 >=5;
+
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		
+		System.out.println(5 <= 8);
+		System.out.println(5 == 5);
+		System.out.println(5 != 5);
+
+/*--------------------------------------------------------------------------*/
+// 11. 논리 연산자
+		
+		// || 하나라도 참이면 참이다.
+		System.out.println(false || false);	//false
+		System.out.println(false || true);	//true
+		System.out.println(true || false);	//true
+		System.out.println(true || true);	//true
+
+		// && 모두 참 일때만 참이다.
+		System.out.println(false && false);	//false
+		System.out.println(false && true);	//false
+		System.out.println(true && false);	//false
+		System.out.println(true && true);	//true
+		
+		// !는 결과를 부정한다.
+		System.out.println(!true);		//false
+		System.out.println(!(3>2));		//false
+		
+		// XOR 서로가 다르면 참이다.
+		System.out.println(false ^ false);	//false
+		System.out.println(false ^ true);	//true
+		System.out.println(true ^ false);	//true
+		System.out.println(true ^ true);	//false
+
+// 산술 - 관계 - 논리 연산 순서이다.
+
+/*--------------------------------------------------------------------------*/
+// 12. if 문
+		
+		int a = 4, b = 3;
+		
+		// 단독구문
+		if(a>b) {
+			System.out.println("호랑이");
+		}
+		
+		// if - else
+		if(a>b) {
+			System.out.println("사자");
+		} else{
+			System.out.println("거북이");
+		}
+		
+		// if - else if - else
+		if(a<b) {
+			System.out.println(1);
+		} else if(a>3){
+			System.out.println(2);
+		} else if(a<10){
+			System.out.println(3);
+		} else {
+			System.out.println(4);
+		}
+
+/*--------------------------------------------------------------------------*/
+// 13. 삼항 연산자
+		
+		int a = 3, b = 2, c;
+		
+		// if - else에서 대입 받는 변수가 같을 때는 삼항 연산자를 생각하자.
+		if(a>b) {
+			c = a + b;
+		} else {
+			c = a - b;
+		}
+		System.out.println(c);
+		
+		// 삼항 연산자
+		c = (a>b) ? a + b : a - b;
+		System.out.println(c);
+
+		String s;
+		if(a>b) {
+			s = "호랑이";
+		} else {
+			s = "코끼리";
+		}
+		System.out.println(s);
+		
+		// 삼항 연산자
+		s = (a>b) ? "호랑이" : "코끼리";
+		System.out.println(s);
+
+/*--------------------------------------------------------------------------*/
+// 14. switch
+		
+		int key = 50;
+		
+		switch (key) {
+		
+		case 10:
+			System.out.println("호랑이");
+			break;
+		
+		case 20:			
+			System.out.println("코끼리");
+			break;
+		
+		case 30:			
+			System.out.println("앵무새");
+			break;
+		
+		default:
+			System.out.println("원숭이");
+			break;
+		}
+
+		// if - else로 변형
+		if(key==10) {
+			System.out.println("호랑이");			
+		} else if(key==20) {
+			System.out.println("코끼리");			
+		} else if(key==30) {
+			System.out.println("앵무새");									
+		} else {
+			System.out.println("원숭이");												
+		}
+
+// else if를 switch로 바꿀 수 있다면 선택은 switch를 사용한다.
+
+/*--------------------------------------------------------------------------*/
+// 15. while문
+		
+		int num = 0;
+		
+		while(true) {
+			System.out.println(num);
+			num++;
+			
+			if(num==5) {
+				continue;
+			} 
+			
+			System.out.println("호랑이");
+			
+			if(num==10) {
+				System.out.println("프로그램 종료");
+				break;
+			}	
+		}
+		
+		System.out.println("--------------");
+
+		num = 0;	
+		
+		while(true) {
+			num++;
+			
+			if(num>10) {
+				System.out.println("프로그램 종료");
+				break;
+			}
+			
+			System.out.println("호랑이"+num);
+		}
+
+/*--------------------------------------------------------------------------*/
+// 16. 우박수 프로그램 , 콜라츠 알고리즘
+		
+		/*int num = 123;
+		
+		while(true) {
+			System.out.println(num);
+			
+			if(num==1) {
+				System.out.println("프로그램 종료");
+				break;
+			}
+			
+			if(num%2==0) {
+				num = num/2;
+			} else {
+				num = num * 3 + 1;
+			}
+			
+		}*/
+
+		int num = 123;
+		
+		while(true) {
+			System.out.println(num);
+			
+			if(num==1) {
+				System.out.println("프로그램 종료");
+				break;
+			}
+			
+			// 삼항 연산자로 바꿨다.
+			num = (num%2==0) ? num/2 : num * 3 + 1;		
+		}
+
+/*--------------------------------------------------------------------------*/
+// 17. for문
+		
+		// 0부터 시작해서 9까지
+		for (int i = 0; i < 10; i++) {
+			//System.out.println(i);
+			System.out.print(i+" "); //가로로 출력
+		}
+		
+		System.out.println();
+		
+		// 1부터 시작해서 10까지
+		for (int i = 1; i <= 10; i++) {
+			System.out.print(i+" ");
+		}
+		
+		System.out.println();
+		
+		// -5부터 시작해서 5까지
+		for (int i = -5; i <= 5; i++) {
+			System.out.print(i+" ");
+		}
+
+/*--------------------------------------------------------------------------*/
+// 18. 구구단 만들기
+		
+		int num = 8;
+		for (int i = 1; i < 10; i++) {
+			System.out.println(num+"*"+i+"="+(num*i));
+		}
+
+/*--------------------------------------------------------------------------*/
+// 19. 합산프로그램
+		
+		int num = 100;
+		int s = 0;
+		for (int i = 1; i <= num; i++) {
+			s = s + i;
+		}
+		System.out.println(s);
+
+/*--------------------------------------------------------------------------*/
+// 20. 이중 for 문
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 4; j++) {
+				System.out.print("["+i+","+j+"]");
+			}
+			System.out.println();
+		}
+
+/*--------------------------------------------------------------------------*/
+// 21. 배열
+		
+		int [] ar; // 변수 선언
+		ar = new int[5]; // 배열 5개 생성
+		
+		// br이라고 하는 변수 3개 만들었다.
+		int [] br = {10, 20, 30}; 
+		
+		// cr이라는 변수 5개, 초기 값은 모두 0이다.
+		int [] cr = new int[5];
+		
+		for (int i = 0; i < 3; i++) {
+			System.out.print(br[i]+" ");
+		}
+		
+		System.out.println();
+		
+		for (int i = 0; i < br.length; i++) {
+			System.out.print(br[i]+" ");
+		}       
+		
+		System.out.println();
+		
+		for (int i : br) {
+			System.out.print(i+" ");
+		}
+
+/*--------------------------------------------------------------------------*/
+// 22. String 배열
+		
+		String [] ar;
+		ar = new String [3];
+		
+		String [] br = {"호랑이", "코끼리", "독수리", "앵무새"};
+		
+		String [] cr = new String [4];
+		
+		for (int i = 0; i < br.length; i++) {
+			System.out.print(br[i]+" ");
+		}
+		
+		System.out.println();
+		
+		for (String s : br) {
+			System.out.print(s+" ");
+		}
+
+/*--------------------------------------------------------------------------*/
+// 23. 객체 생성과 배열 생성의 차이
+		
+		// 토끼 s = new 토끼();
+		String s = new String(); 
+		
+		// 토끼[] a = new 토끼[4];
+		String[] a = new String[4];
+
+/*--------------------------------------------------------------------------*/
+// 24. 2차원 배열과 enum(열거형) 1년 뒤에
+
+
+/*--------------------------------------------------------------------------*/
+// 25. 클래스의 기본 모형
+
+package PACK;
+
+class Tiger{
+	// 1. 필드 선언
+	int color, age;
+	String name, address;
+	
+	// 2. 생성자
+	Tiger(){
+		
+	}
+	
+	// 3. 멤버(메소드) 함수
+	void func01() {
+		
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		
+		
+	}
+}
+
+/*--------------------------------------------------------------------------*/
+// 26. 생성자
+
+package PACK;
+
+// 생성자 함수는 클래스 이름과 동일해야 한다.
+// 생성자 함수도 함수이므로 오버로딩 할 수 있다.
+// 오버로딩 이란 함수 인수 전달 갯수가 다르거나, 
+// 전달 인수 갯수가 같아도 타입이 다를 때 동일한 이름의 함수를 사용할 수 있다.
+// 생성자는 객체가 생성(new) 될 때 자동 호출 된다.
+// 생성자는 프로그래머가 임의로 콜 할 수 없다.
+// 생성자를 사용하는 목적은 필드 변수 초기화가 목적이다.
+// this 키워드를 이용하여 생성자에서 다른 생성자를 콜 할 수 있다.
+// 이 때 this 키워드는 반드시 코드 첫 줄에 와야하고, 두 번 사용할 수 없다.
+// 생성자를 하나도 만들지 않으면 자동으로 디폴트 생성자는 만들어진다.
+
+class Tiger{
+	
+	int a, b, c;
+	Tiger(){
+		System.out.println("인수 전달 없는 디폴트 생성자 콜");
+	}
+	
+	// 생성자 오버로딩
+	Tiger(int a, int b){
+		System.out.println("인수 전달 있는 생성자 콜");
+	}
+	
+	Tiger(int a, int b, int c){
+		
+		// 첫 번째 생성자 콜
+		// this();
+		
+		// 이렇게 하면 두 번째 생성자를 콜 할 수 있다.
+		this(10,20);
+		
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		Tiger t2 = new Tiger(3,5);
+		Tiger t3 = new Tiger(1,2,3);
+		
+	}
+
+}
+
+/*--------------------------------------------------------------------------*/
+// 27. private 변수 사용, 자바 빈, getter setter로 함수 사용
+
+package PACK;
+
+class Tiger{
+	
+	// private은 객체를 생성(new) 해서 사용할 수 없다.
+	private int price;
+	private String name;
+	
+	// 오른쪽 마우스버튼 - source - genernate cunstructor
+	public Tiger(int price, String name) {
+		super();	// 상속을 대비해서 만들어진 문법이다.
+					// 없으면 자동으로 만들어준다.
+ 		this.price = price;	// 필드의 price = 함수의 인수 전달 price
+		this.name = name;
+	}
+
+	// 오른쪽 마우스버튼 - source - genernate setter getter
+	// 이 함수를 만드는 이유는 필드 변수를 감추어서 정보 은닉을 시키기 위해 사용
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	void show() {
+		System.out.println(price+" "+name);
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger(30,"개구리");
+		
+		t1.setName("현민");
+		System.out.println(t1.getName());
+		
+		t1.setPrice(300);
+		System.out.println(t1.getPrice());
+		
+		t1.show();
+		
+	}
+
+}
+
+/*--------------------------------------------------------------------------*/
+// 28. 함수의 기본 형태
+
+package PACK;
+
+class Tiger{
+	void func01() {
+		System.out.println("1 번 콜");
+	}
+	
+/*-------------------------------------------------------*/
+
+	void func02(int a) {
+		System.out.println("2 번 콜");
+	}
+
+/*-------------------------------------------------------*/
+
+	int func03() {
+		System.out.println("3 번 콜");
+		return 100;
+	}
+
+/*-------------------------------------------------------*/
+
+	int func04(int a) {
+		System.out.println("4 번 콜");
+		return a;
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+
+		t1.func01();
+		System.out.println("----------");
+
+/*-------------------------------------------------------*/
+
+		t1.func02(3);
+		System.out.println("----------");
+
+/*-------------------------------------------------------*/
+		
+		// 리턴 값을 받는 방법
+		// 사용 방법 1 리턴 값이 무의미
+		t1.func03();
+		System.out.println("----------");
+		
+		// 사용 방법 2
+		// int로 인수를 만들어서 받는다.
+		int num = t1.func03();
+		System.out.println(num);
+		System.out.println("----------");
+		
+		// 사용 방법 3
+		// 바로 출력창에 함수를 사용한다.
+		System.out.println(t1.func03());
+		System.out.println("----------");
+
+/*-------------------------------------------------------*/
+		
+		// 1.
+		t1.func04(5);
+		System.out.println("----------");
+
+		// 2.
+		int num2 = t1.func04(5);
+		System.out.println(num2);
+		System.out.println("----------");
+		
+		// 3.
+		System.out.println(t1.func04(5));
+		
+	}
+
+}
+
+/*--------------------------------------------------------------------------*/
+// 29. 함수의 기본 형태2
+
+package PACK;
+
+class Tiger{
+	void func01() {
+		System.out.println("1번 콜");
+	}
+
+/*-------------------------------------------------------*/
+
+	void func02(String s) {
+		System.out.println("2번 콜");
+	}
+
+/*-------------------------------------------------------*/
+
+	String func03() {
+		System.out.println("3번 콜");
+		return "오렌지";
+	}
+
+/*-------------------------------------------------------*/
+
+	String func04(String s) {
+		System.out.println("4번 콜");
+		return s;
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		
+		t1.func01();
+		System.out.println("----------");
+
+/*-------------------------------------------------------*/
+		
+		t1.func02("사과");
+		System.out.println("----------");
+
+/*-------------------------------------------------------*/
+		
+		t1.func03();
+		System.out.println("----------");
+		
+		String s = t1.func03();
+		System.out.println(s);
+		System.out.println("----------");
+		
+		System.out.println(t1.func03());
+		System.out.println("----------");
+
+/*-------------------------------------------------------*/
+
+		t1.func04("사과");
+		System.out.println("----------");
+		
+		String s1 = t1.func04("사과");
+		System.out.println(s1);
+		System.out.println("----------");
+		
+		System.out.println(t1.func04("사과"));
+
+/*-------------------------------------------------------*/
+
+		// 리턴 값이 없어서 오류
+		// The method println(boolean) in the type PrintStream is not applicable for the arguments (void)
+		// System.out.println(t1.func01());
+		// System.out.println(t1.func02("사과"));
+
+		// 이것은 리턴 값이 출력이 안된다.
+		t1.func03();
+	}
+
+}
+
+/*--------------------------------------------------------------------------*/
+// 30. 함수의 기본 형태3
+
+package PACK;
+
+class Tiger{
+	
+}
+
+class Lion{
+	void func01() {
+		System.out.println("1번 함수 콜");		
+	}
+
+/*-------------------------------------------------------*/
+	
+	void func02(Tiger tiger) {
+		System.out.println("2번 함수 콜");
+	}
+	
+/*-------------------------------------------------------*/
+
+	Tiger func03_1() {
+		System.out.println("3_1번 함수 콜");
+		return null; // 이렇게 오류를 잡는다
+	}
+	Tiger func03_2() {
+		System.out.println("3_2번 함수 콜");
+		return new Tiger(); // 객체를 생성
+	}
+	Tiger func03_3() {
+		System.out.println("3_3번 함수 콜");
+		Tiger tiger = new Tiger(); 
+		return tiger; // 위에서 만들고 리턴 한다. 
+	}
+
+/*-------------------------------------------------------*/
+	
+	Tiger func04(Tiger tiger) {
+		System.out.println("4번 함수 콜");		
+		return tiger; // 인수 전달 받아서 바로 리턴
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Lion lion = new Lion();
+		
+		lion.func01();
+		System.out.println("------------");
+
+/*-------------------------------------------------------*/
+
+		lion.func02(new Tiger());
+		System.out.println("------------");
+		
+		Tiger t1 = new Tiger();
+		lion.func02(t1);
+		System.out.println("------------");
+
+/*-------------------------------------------------------*/
+		
+		lion.func03_1();
+		System.out.println("------------");
+		
+		Tiger t2 = lion.func03_1();
+		System.out.println(t2);
+		System.out.println("------------");
+		
+		System.out.println(lion.func03_1());
+		System.out.println("------------");
+
+/*-------------------------------------------------------*/
+
+		Tiger t3 = lion.func04(new Tiger());
+		System.out.println(t3);
+		
+	}
+	
+}
+
+/*--------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,365 @@
+
+class
+객체 지향 방법
+
+/*-----------------------------------------------------------------*/
+
+new가 객체를 생성
+
+string s = new string();
+
+string: 설계도
+
+new: 객체를 만들고 그 이름을 s라고 하자.
+
+비행기 f16 = new 비행기(); f16이 객체가 된다.
+
+int a; 변수
+sting b; 객체(object)
+
+클래스 크게 두 파트로 나누어져 있다.
+
+ex) 사과
+
+속성(명사) 색상, 무게, 원산지, 당도 : 변수
+
+동작(동사) 먹는다. 판다. 믹서에 넣는다. : 함수
+
+/*-------------------------------------------------------------*/
+
+// 1. class를 만드는 과정
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+// 1. public class위에 클래스 생성 
+// 클래스 이름의 첫 글자는 대문자를 사용하는 것이 좋다.
+
+class Airplane {
+	int price;	// 1-1. 변수를 생성하고 여러개 만들 수 있다. 
+	int color;	// 속성을 정의한다.
+	int national;
+} // 세미콜론은 쓰지 않아도 된다.
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+// 2. 객체를 생성 // 대소문자 그대로 적기
+		
+		Airplane F16 = new Airplane(); 
+		
+// 3. 객체를 사용
+		
+		F16.color = 10;	
+		F16.price = 20;
+		F16.national = 30;
+		System.out.println(F16.color);
+		System.out.println(F16.price);
+		System.out.println(F16.national);
+		
+	}
+
+}
+
+// 1. 위에 만든 클래스는 Airplane 클래스이다.
+// 2. 클래스를 이용하여 객체를 생성 시킬 때 new를 사용한다.
+// 3. 현재 F16을 객체(object)라고 한다.
+// 4. 클래스 안의 변수들은 모두 Airpale의 속성이다.
+
+/*-------------------------------------------------------------*/
+
+// 2. 클래스를 사용하여 효율적이다.
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Fruit {
+	int Color;
+	int Price;
+	int Origanl;
+	int Weight;
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+// 이렇게 사용하는 것은 객체 지향이 아니다.
+		
+		int BananaColor, BananaPrice, BananaOrignal, BananaWeight;
+		int AppleColor, ApplePrice, AppleOrignal, AppleWeight;
+		int OrangeColor, OrangePrice, OrangeOrignal, OrangeWeight;
+		int MangoColor, MangoPrice, MangoOrignal, MangoWeight;
+		int WatermelonColor, WatermelonPrice, WatermelonOrignal, WatermelonWeight;
+		
+		
+// 이것이 객체 지향적인 프로그램이다.
+		
+		Fruit Banana = new Fruit();
+		Fruit Apple = new Fruit();
+		Fruit Orange = new Fruit();
+		Fruit Mango = new Fruit();
+		Fruit Watermelon = new Fruit();
+	
+	}
+
+}
+
+/*-------------------------------------------------------------*/
+// 기술 면점
+
+1. 생성자 : 객체의 데이터가 저장되는 곳
+2. 속성, 변수 = 필드
+3. 동작, 함수 = 메소드
+
+캡슐화: 객체의 필드, 메소드를 하나로 묶고, 실제 구현 내용을 감추는 것
+
+상속
+
+다형성
+
+전달 인수: 가지고 들어갈 때
+
+리턴 값: 다시 되돌려 받는 값
+
+초기화: imitialize
+
+매개변수: 전달 인수를 받는 변수
+
+객체 간의 상호 작용
+
+객체의 모델링
+
+인스턴스
+
+오버로딩
+
+호출
+
+퍼블릭
+
+
+/*-------------------------------------------------------------*/
+
+// 3. 객체의 필드는 0으로 초기화 되어있고, 값을 넣으면 바뀐다.
+
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Apple {
+	int a; // 필드 a, b, c
+	int b = 10; // a, b, c는 Apple의 멤버다. 
+	int c;
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		// 객체를 만든다. 
+		Apple t1 = new Apple(); // 비행기 1대
+		Apple t2 = new Apple(); // 비행기 2대가 만들어짐
+		
+		// 객체를 사용한다.
+		// 객체를 생성할 때 초기값을 0으로 가지고 있다.
+		System.out.println(t1.a+" "+t1.b+" "+t1.c); 
+		// 변수의 이름은 같지만 다르다.
+		System.out.println(t2.a+" "+t2.b+" "+t2.c); 
+		
+		t1.a = 100;
+		System.out.println(t1.a);
+		System.out.println(t2.a);
+		
+	}
+}
+
+/*-------------------------------------------------------------*/
+
+// 4. 제어흐름의 순서
+
+// 이런 구조를 주민센터, *생성자* 라고 한다.
+// 객체는 생성될 때 반드시 생성자를 거쳐서 생성된다.
+// 만들어 놓으면 무조건 간다.
+// 반드시 클래스 이름과 동일하게 만들어야 한다.
+// 변수를 한 번 초기화 하기 위해서 생성자가 필요하다.
+class Apple {
+	int a, b, c;
+	Apple(){ // new를 만나서 클래스와 똑같은 이름이 있으면 실행이 된다.
+		System.out.println("호랑이");
+		System.out.println("코끼리");
+		a = 10;
+		b = 20;
+		c = 99;
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		System.out.println("앵무새1");
+		Apple t1 = new Apple(); // 여기서 객체가 생성된다.
+								// 객체의 이름은 t1이다.
+		System.out.println("앵무새2");
+		Apple t2 = new Apple();
+		System.out.println("앵무새3");
+		
+		// 값이 같아진다.
+		System.out.println(t1.a+" "+t1.b+" "+t1.c);
+		System.out.println(t2.a+" "+t2.b+" "+t2.c);
+
+	}
+}
+
+
+/*-------------------------------------------------------------*/
+
+클래스 banana 생성할게요:
+
+-> 클래스, 변수필드, 생성자, 객체 만들기
+[단축키class 클래스 명 앞에 커서 두고, 
+Alt+Shift+r 누르면 해당하는 이름을 가진 부분 한 번에 수정 가능
+
+class Banana{ 클래스 선언
+	int a,b,c; 변수필드
+	Banana(){ 생성자
+		System.out.println("생성자 콜");
+	}
+} 
+Banana t1 = new Banana(); 객체선언 
+
+↓
+
+class Robot{
+	int a,b,c;
+	Robot(){
+		System.out.println("생성자 콜");
+	}
+}
+public class Hello01 {
+
+	public static void main(String[] args) {	
+		Robot t1 = new Robot();
+		
+	
+	}
+}
+
+/* /* class 5번: 함수
+함수를 불렀다: 함수를 콜한다  함수는 부를 때 반응 
+
+package pack01;
+
+import java.util.Random;
+import java.util.Scanner;
+ 
+class Robot{
+	int a,b,c;
+	Robot(){
+		System.out.println("생성자 콜");
+	}
+	
+	/* 함수 = method
+	 함수는 무한대로 만들 수 있다	
+	 위치: 생성자{} 바로 아래
+
+	void 수현() {
+		system.out println("예"); // 아직 부른 상태 아님. 실행은 main에서 객체를 이용해 실행 가능
+	} 함수 생성. 함수명: 수현. 영어는 첫글자 소문자. 예: 함수를 콜했을 때 반응*/
+	
+	void 수현() {
+		System.out.println("예");
+		System.out.println("왜요?");
+		
+	}
+	void 관우() {
+		System.out.println("아주 잘생겼다");
+	}// 또 다른 함수 생성
+	void move() {
+		System.out.println("걸어갑니다");
+	}// 동작
+	
+}
+public class Hello01 {
+
+	public static void main(String[] args) {	
+		Robot t1 = new Robot();
+		t1.수현(); //수현이란 함수를 부르는 방법: t1.함수명();
+		//객체가 함수를 부른다. 함수를 콜한다. 함수에 반응이 일어났다
+		t1.수현(); //두번 부르면 두번 반응. 
+		for (int i = 0; i < 5; i++) {
+			t1.수현();
+		}// 수현 함수를 5번 더 콜
+		t1.관우();
+		System.out.println("앵무새1");
+		t1.move(); // 함수를 콜한다
+		System.out.println("앵무새2");
+	
+	}
+}
+
+/*
+package pack01;
+
+import java.util.Random;
+import java.util.Scanner;
+ 
+class Bird{
+	int a,b,c;
+	Bird(){
+		System.out.println("생성자 콜");
+	}
+	void fly() {
+		System.out.println("새가 납니다");
+	}
+}
+
+public class Hello01 {
+
+	public static void main(String[] args) {	
+		Bird t1 = new Bird();		
+		for (int i = 0; i < 10; i++) {
+			t1.fly();
+		}// 새10번 날리기
+	}
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

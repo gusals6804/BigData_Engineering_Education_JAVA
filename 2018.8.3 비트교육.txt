@@ -1,0 +1,259 @@
+package PACK;
+
+class Tiger{
+	void func01() {
+		System.out.println(3);
+	}
+}
+
+public class Hello2 {
+
+	public static void main(String[] args) {
+
+		 System.out.println(1);
+		 Tiger tiger = new Tiger();
+		 tiger.func01();
+		 System.out.println(2);
+		 
+	}
+
+}
+
+/*------------------------------------------------------------------------------*/
+
+package PACK;
+
+// 추상 클래스와 추상 함수 생성
+/*abstract class Animal{
+	abstract void func01();
+		
+}*/
+
+/*------------------------------------------------------------------------------*/
+// 인터페이스를 만들고 상속 받는 클래스 만들기
+
+/*interface Animal{
+	void func01();
+}
+
+class Dog implements Animal{
+//The type Dog must implement the inherited abstract method Animal.func01()
+	public void func01() {
+		System.out.println("dog");
+	}
+}*/
+
+/*------------------------------------------------------------------------------*/
+// 추상 클래스를 만들고 상속 받는 클래스 만들기
+
+/*abstract class Animal{
+	abstract void func01();
+}
+
+class Dog extends Animal{
+//The type Dog must implement the inherited abstract method Animal.func01()
+	public void func01() {
+		System.out.println("dog");
+	}
+}*/
+
+/*------------------------------------------------------------------------------*/
+// Thread 클래스를 상속 받는다.
+
+class Tiger extends Thread{
+	@Override
+	public void run() {
+		System.out.println("999");
+		for (int i = 0; i < 100; i++) {
+			System.out.println("사자"+i);
+		}
+	}
+}
+
+/*------------------------------------------------------------------------------*/
+// Thread와 비교
+
+class Dog{
+	void start() {
+		run();
+	}
+	void run() {
+		System.out.println("run 되었다.");
+	}
+}
+
+public class Hello2 {
+
+	public static void main(String[] args) {
+
+		/*Dog dog = new Dog();
+		dog.func01();*/
+		
+		//Thread 클래스를 사용하면 순서가 뒤죽박죽이다.
+			System.out.println("프로그램 시작");
+		Tiger t1 = new Tiger();
+		// start 함수는 반드시 run 함수를 콜 한다.
+		t1.start(); 
+		for (int i = 0; i < 100; i++) {
+			System.out.println("호랑이"+i);
+		}
+		System.out.println("프로그램 끝");	
+
+/*------------------------------------------------------------------------------*/
+	
+		//일반 클래스로 만들면 순서가 그대로 나온다.
+		/*System.out.println("프로그램 시작");
+		Dog d1 = new Dog();
+		d1.start();
+		System.out.println("프로그램 끝");*/
+		
+	}
+
+}
+
+/*------------------------------------------------------------------------------*/
+
+package PACK;
+
+class Animal{
+	void func01() {
+		System.out.println("부모함수1");
+	}
+}
+
+class Tiger extends Animal{
+	void func01() {
+		System.out.println("자식함수1");
+	}
+}
+
+class Cat extends Thread{
+	@Override
+	public void run() {
+		System.out.println("Thread 작동 1");
+		super.run();
+	}
+}
+
+public class Hello2 {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+		t1.func01();
+		
+		// 익명 클래스를 만들어서 사용할 수 있다. 위에 것과 같다.
+		Animal a1 = new Animal() {
+			@Override
+			void func01() {
+				System.out.println("익명 클래스의 함수 1");
+			}
+		};
+		a1.func01();
+
+/*------------------------------------------------------------------------------*/	
+
+		Cat c1 = new Cat();
+		c1.start();
+		
+		Thread th = new Thread() {
+			@Override
+			public void run() {
+				System.out.println("Thread 작동 2");
+				super.run();
+			}
+		};
+		th.start();
+
+		// 익명 객체
+		new Animal() {
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				super.func01();
+				System.out.println("익명 객체");
+			}
+		}.func01();
+		
+	}
+
+}
+
+/*------------------------------------------------------------------------------*/
+// Thread 사용 방법
+
+package PACK;
+
+class MyThread extends Thread{
+	@Override
+	public void run() {
+		System.out.println("Thread 1번 예제");
+	}
+}
+
+// 추가적인 방법
+class KongThread implements Runnable{
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println("4번");
+	}
+}
+
+public class Hello2 {
+
+	public static void main(String[] args) {
+
+		//1.
+		MyThread m1 = new MyThread();
+		m1.start();
+		
+		//2.
+		Thread m2 = new Thread() {
+			@Override
+			public void run() {
+				System.out.println("Thread 2번 예제");
+			}
+		};
+		m2.start();
+		
+		//3.
+		new Thread() {
+			@Override
+			public void run() {
+				System.out.println("Thread 3번 예제");
+			}
+		}.start();
+
+/*------------------------------------------------------------------------------*/
+
+		//4.
+		KongThread kong = new KongThread();
+		Thread m3 = new Thread(kong);
+		m3.start();
+
+/*------------------------------------------------------------------------------*/
+		
+		MyThread m5 = new MyThread();
+		m5.start();
+		
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		System.out.println("앵무새");
+		
+		// 한 번 이상 사용 못한다.
+		// m5.start();
+
+		// 되도록 사용 금지
+		m5.stop();
+
+	}
+
+}
+
+
+

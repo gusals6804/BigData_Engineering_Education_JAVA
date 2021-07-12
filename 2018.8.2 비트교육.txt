@@ -1,0 +1,233 @@
+// 함수를 사용하여 sql문 insert 시키기
+
+//int a = (new Random()).nextInt(100);
+package PACK;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+class Dao{ // Data Access Object 필드 CRUD 객체
+	
+	Connection con=null;
+	
+	void connect() {
+		try {
+			
+			//1단계 : class 확인
+			//현재 찾고 싶은 클래스를 찾아준다.
+			String driver ="oracle.jdbc.driver.OracleDriver"; 
+			System.out.println(Class.forName(driver));
+			System.out.println(1);
+			
+			//2단계 : 로그인
+			String dburl="jdbc:oracle:thin:@127.0.0.1:1521:orcl";
+			String username="khm"; 
+			String password="1"; 
+			
+			con=DriverManager.getConnection(dburl,username,password);			
+			
+			System.out.println(2);		
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	void insert(String name, int age, int salary, String home) {
+		
+		try {
+
+			connect();
+			
+			//3단계: 쿼리문 작성 및 컴파일
+			PreparedStatement ps=null;
+
+         		/* String name = "강감찬";
+			int age = 26;
+			int salary = 300;
+			String home = "서울"; */
+			//String sql="INSERT into banana values('개나리',25,1000,'하회마을')";
+			String sql = String.format("insert into banana values('%s',%d,%d,'%s')",name,age,salary,home);
+			System.out.println(sql);
+
+			ps = con.prepareStatement(sql);
+			System.out.println(3);
+
+			//4단계: 실행
+			ps.executeUpdate(); //f5번 누른것과 같다.
+			System.out.println(4);
+
+			//5단계: 접속 종료
+			ps.close(); 
+			con.close();
+			System.out.println(5);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+	}
+	
+	void update(String name2, int age, int salary, String home, String name) {
+
+		try {
+
+			connect();
+
+			//3단계: 쿼리문 작성 및 컴파일
+			PreparedStatement ps=null;
+
+			/* String name = "강감찬";
+			int age = 26;
+			int salary = 300;
+			String home = "서울"; */
+			//String sql="INSERT into banana values('개나리',25,1000,'하회마을')";
+			String sql = String.format("update banana set name = '%s', age = %d, salary = %d, home = '%s' where name = '%s'",name2,age,salary,home,name);
+			System.out.println(sql);
+
+			ps = con.prepareStatement(sql);
+			System.out.println(3);
+
+			//4단계: 실행
+			ps.executeUpdate(); //f5번 누른것과 같다.
+			System.out.println(4);
+
+			//5단계: 접속 종료
+			ps.close(); 
+			con.close();
+			System.out.println(5);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+	}
+	
+	void delete(String name) {
+
+		try {
+
+			connect();
+
+			//3단계: 쿼리문 작성 및 컴파일
+			PreparedStatement ps=null;
+
+			/* String name = "강감찬";
+			int age = 26;
+			int salary = 300;
+			String home = "서울"; */
+			//String sql="INSERT into banana values('개나리',25,1000,'하회마을')";
+			String sql = String.format("DELETE FROM banana WHERE name = '%s'",name);
+			System.out.println(sql);
+
+			ps = con.prepareStatement(sql);
+			System.out.println(3);
+
+			//4단계: 실행
+			ps.executeUpdate(); //f5번 누른것과 같다.
+			System.out.println(4);
+
+			//5단계: 접속 종료
+			ps.close(); 
+			con.close();
+			System.out.println(5);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+	}
+	
+	// 실행하는 함수가 다르다 조심하자.
+	void select() {
+
+		try {
+
+			connect();
+
+			//3단계: 쿼리문 작성 및 컴파일
+			PreparedStatement ps=null;
+
+			/* String name = "강감찬";
+			int age = 26;
+			int salary = 300;
+			String home = "서울"; */
+			//String sql="INSERT into banana values('개나리',25,1000,'하회마을')";
+			//String sql = "select * from banana";
+			//String sql = "select * from banana where name like '곰%' order by age";
+			//String sql = "select count(*) as num from banana ";
+			//String sql = "select sum(age) as summary from banana ";
+			String sql = "select sum(age) as sum, avg(salary) avg from banana ";
+			System.out.println(sql);
+
+			ps = con.prepareStatement(sql);
+			System.out.println(3);
+
+			//4단계: 실행
+			ResultSet rs = ps.executeQuery(); //여기서 바뀐다.
+			while(rs.next()) {
+				/*String n = rs.getString("name");
+				int a = rs.getInt("age");
+				int s = rs.getInt("salary");
+				String h = rs.getString("home");
+				System.out.println(n+" "+a+" "+s+" "+h);*/	
+				
+				//int nn = rs.getInt("num")
+				//int nn = rs.getInt("summary");
+				int nn1 = rs.getInt("sum");
+				int nn2 = rs.getInt("avg");
+				
+				//System.out.println("갯수:"+nn);
+				//System.out.println("나이 총합:"+nn);
+				System.out.println("나이 합"+nn1);
+				System.out.println("연봉 평균"+nn2);
+						
+			}
+			
+			System.out.println(4);
+
+			//5단계: 접속 종료
+			rs.close();
+			ps.close(); 
+			con.close();
+			System.out.println(5);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Dao dao = new Dao();
+/*		dao.insert("세종대왕",50,1500,"조선시대");
+		dao.insert("자라", 12, 300, "바다");
+		
+		String[] ar = {"서울","대구","대전","부산"};
+		
+		for (int i = 0; i < 15; i++) {
+			int r1 = (new Random()).nextInt(100);
+			int r2 = (new Random()).nextInt(1000);
+			int r3 = (new Random()).nextInt(4);
+			dao.insert("곰돌이"+i, r1, r2, ar[r3]);
+		}*/
+		
+		dao.update("호랑이0",15, 300,"제주도","곰돌이4");
+		dao.delete("자라");
+		dao.select();
+		
+	}
+
+}

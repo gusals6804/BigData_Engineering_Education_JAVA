@@ -1,0 +1,308 @@
+
+switch 문
+
+/*-----------------------------------------------------------------*/
+
+1.case 뒤에 변수를 사용할 수 없다.
+
+2.숫자를 중복해서 쓸 수 없다.
+
+3.break를 쓰지 않으면 계속 진행이 되버린다.
+
+4.의도적으로 출력하고 싶을 때 break를 생략한다.
+
+5.default break는 생략 가능하지만 가급적 사용
+
+6.case에서 실행할 문장이 한 줄 이상일 경우에는 스코프를 사용한다.
+  일반적으로 스코프를 사용한는 것이 좋다.
+
+7.break와 case 사이에 공백을 준다.
+
+8.else - if문이 switch문을 바뀔 수 있다면 switch문을 사용한다.
+  switch문이 프로그램 효율이 더 뛰어나다.
+
+/*-----------------------------------------------------------------*/
+
+//예제
+
+	System.out.println("숫자를 입력하세요.");
+		for (int i = 0; i < 10; i++) {
+			int input = (new Scanner(System.in)).nextInt();	
+			int num = 10;
+			
+			switch(input) {
+			case 40: // 의도적으로 출력하고 싶을 때 break를 생략한다.
+			case 10: // 10 대신에 변수를 사용할 수 없다. 
+				System.out.println("호랑이");
+				//break; // break를 쓰지 않으면 계속 진행이 되버린다. 
+				// 이 사이에 공백을 준다. 
+
+			case 20:{ // 숫자를 중복해서 쓸 수 없다.
+				System.out.println("코끼리1");
+				System.out.println("코끼리2");
+			}break; //2줄 이상일 때 스코프를 사용
+			
+			case 30: 
+				System.out.println("앵무새");
+				break;
+				
+			default: // default break는 생략 가능하지만 가급적 사용
+				System.out.println("야옹");
+				break;
+			}
+		}
+
+/*-----------------------------------------------------------------*/
+
+// 기본 예제
+// 숫자를 사용할 수 있다.
+
+			switch(10) {
+			case 10:{
+				System.out.println("호랑이");
+			}break;
+			
+			case 20:{
+				System.out.println("코끼리");
+			}break;
+			
+			default:{
+				System.out.println("앵무새");
+			}break;
+			}
+
+/*-----------------------------------------------------------------*/
+
+// 문자열을 사용할 수 있다.
+
+		String s = new String("사과");
+
+		switch(s) {
+		case "사과":{
+			System.out.println("호랑이");
+		}break;
+
+		case "바나나":{
+			System.out.println("코끼리");
+		}break;
+
+		default:{
+			System.out.println("앵무새");
+		}break;
+		}
+
+/*-----------------------------------------------------------------*/
+
+// 문자를 사용할 수 있다.
+
+		char ch = '대';
+		
+		switch(ch) {
+		case '대':{
+			System.out.println("호랑이");
+		}break;
+
+		case '한':{
+			System.out.println("코끼리");
+		}break;
+
+		default:{
+			System.out.println("앵무새");
+		}break;
+		}
+
+/*-----------------------------------------------------------------*/
+
+//while 문
+
+		int num = 0;
+		while(true) {
+			System.out.println("호랑이"+" "+num);
+			num++;
+		}
+
+// 조건을 만족하므로 계속 실행된다.
+// 무한 루프에 빠졌다.
+
+/*-----------------------------------------------------------------*/
+
+		while(true) {
+			System.out.println("호랑이1");
+			System.out.println("호랑이2");
+			System.out.println("호랑이3");
+			break; // 이 순간 빠져나간다.
+			System.out.println("호랑이4");
+		}
+
+/*-----------------------------------------------------------------*/
+
+		int num = 0;
+		while(true) {
+			System.out.println("호랑이"+" "+num);
+			
+			if(num>3){
+				break; // 이 순간 빠져나간다.
+			}
+			num++;
+			
+			System.out.println("앵무새"+" "+num);
+			System.out.println("--------------");
+		}
+	
+		System.out.println("프로그램을 종료합니다.");
+
+/*-----------------------------------------------------------------*/
+
+for은 반복 횟수를 알 때 사용
+while은 반복 횟수를 모를 때 사용
+
+/*		int num = 0;
+		while(num<3) {
+			System.out.println("호랑이");
+			num++;
+		} // 이런 경우는 break를 안써도된다.
+		
+		System.out.println("종료");*/ 
+		// 이 문장을  for문으로 사용할 수 있다.
+
+/*-----------------------------------------------------------------*/
+
+//예제 1 반복 횟수를 모를 때 짝수와 홀수 구분하기
+
+		while(true) {
+			
+			System.out.println("짝수인지 홀수인지 알려줄게 종료할려면 999");
+			int input = (new Scanner(System.in)).nextInt();
+			
+			if(input==999) {
+				System.out.println("프로그램을 종료합니다.");
+				break;
+			}
+			
+			if(input%2==0) {
+				System.out.println(input+"은 짝수입니다.");
+			}else {
+				System.out.println(input+"은 홀수입니다.");
+			}
+			
+			System.out.println("---------------------------------");
+			
+		} // 이런 경우에는 break가 꼭 있어야 한다.
+
+/*-----------------------------------------------------------------*/
+
+//예제 2 우박 수 구하기
+		
+		while(true) {
+			
+			System.out.println("숫자를 입력하세요.");
+			int input = (new Scanner(System.in)).nextInt();
+			System.out.println("---------------------");
+			
+			System.out.println(input);
+
+			if(input==1) {
+				System.out.println("우박수 출력을 완료 하였습니다.");
+				break;
+			}
+
+			if(input%2==0) {
+				input = input/2;
+			}else {
+				input = 3 * input + 1;
+			}
+		
+		}
+
+/*-----------------------------------------------------------------*/
+
+문제 13.
+//예제 3 각 자리 숫자의 합을 구하기
+	
+		//ex)638 
+
+		System.out.println("숫자를 입력하세요. 각 자리 수의 합을 구해줄게");
+		int input = (new Scanner(System.in)).nextInt();	
+	
+		int s = 0;
+		while(true) {
+
+			s = s + (input%10); // 8
+			input = input/10; // 63
+
+			if(input==0) {
+				break;
+			}
+		}
+		
+		System.out.println("모든 숫자의 합:"+" "+s+"입니다.");
+
+/*-----------------------------------------------------------------*/
+
+//continue
+
+		while(true) {
+
+			System.out.println("숫자를 입력하세요.");
+
+			int input = (new Scanner(System.in)).nextInt();
+
+			if(input==999) {
+				System.out.println("프로그램이 종료됩니다.");
+				break;	
+			}
+
+			if(input%400==0) {
+				System.out.println("윤년 입니다.");
+				continue; // 다시 while문으로 돌아간다.
+			}
+
+			System.out.println("호랑이");
+
+		}
+		
+/*-----------------------------------------------------------------*/
+
+//패스워드 문제
+
+			System.out.println("고객님의 패스워드를 입력하세요.");
+
+			int input = (new Scanner(System.in)).nextInt();
+
+			if(input!=1234) {
+				System.out.println("암호가 틀렸습니다.");
+				num++;
+
+				if(num==3) {
+					System.out.println("3회 입력 오류");
+					break;
+				}
+				
+				continue;	
+			
+			}else{
+				break;
+			}
+
+		}
+		
+		if(num==3) {
+			System.out.println("게임을 할 수 없어요.");
+		}else {
+			System.out.println("게임을 시작합니다. 즐거운 시간 되세요.");
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

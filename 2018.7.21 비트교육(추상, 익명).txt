@@ -1,0 +1,1097 @@
+/*-----------------------------------------------------------------------------*/
+// 추상 클래스
+// 코드의 ui를 통일 시킨다.
+// 인터페이스
+// 인터페이스는 전부 추상 함수만 들어가있다.
+
+/*-----------------------------------------------------------------------------*/
+// 실수 주의
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{
+	int a = 30; //초기화를 시킬 수 있다.
+// 이렇게 객체 선언과 객체를 만드는 것은 함수 밖에서 할 수 있다.	
+	Lion lion; // = new Lion(); // 이 코드는 함수 밖으로 나갈 수 있다.
+//	a = 100; // 이렇게 사용할 수 없다.
+	Lion c1;
+	Lion c2 = new Lion();
+	Lion c3;
+	
+	void func01() {
+		c1 = new Lion();
+		Lion c3 = new Lion(); // 이것은 함수 안에서 끝이 난다.
+		a++;
+		lion = new Lion();
+		Lion lion = new Lion(); // 이것은 함수 안에서 끝이 난다.
+		System.out.println("호랑이");
+	}
+	
+}
+
+class Lion{
+	void func01() {
+		System.out.println("사자");
+	}
+}
+
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger();
+
+// c2는 바로 사용가능		
+		t1.c2.func01();
+
+// c1 은 함수 1번을 돌려야 사용할 수 있다.		
+		t1.func01();
+		t1.c1.func01();
+
+// c3 는 쓸 수 있는 방법이 없다.		
+		t1.c3.func01();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+//abstract
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger name = new Tiger();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	void func01() {
+		System.out.println("호랑이 콜");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger name = new Tiger();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01(); // 미완성
+		
+}
+
+public class Hello {
+	
+	public static void main(String[] args) {
+		
+		Tiger name = new Tiger();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01(); // 미완성
+	void func02() {
+		System.out.println("호랑이 콜");
+	}
+}
+
+public class Hello {
+	
+	public static void main(String[] args) {
+		
+		Tiger name = new Tiger();
+		
+	}
+}
+
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01(); // 미완성
+	void func02() {
+		System.out.println("호랑이 콜");
+	}
+}
+
+class Lion extends Tiger{
+	void func01() { // 상속 후에 함수를 꼭 만들어 준다.
+		System.out.println("사자 콜");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//		Tiger name = new Tiger();
+		Lion lion = new Lion();
+
+		lion.func01();
+		lion.func02();
+
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+// 익명 클래스
+// 아주 중요한 문법
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01(); 	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+// 객체를 만들 떄 함수를 만든다.
+		Tiger tiger = new Tiger() {
+			void func01() {
+				System.out.println("호랑이");
+			} // 여기에 함수를 작성하면 된다.
+		};
+		
+		tiger.func01();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+// @override
+// annotation 
+// 습관적으로 사용하는 것이 좋다.
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01();
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger tiger = new Tiger() {
+			// 컨트롤 스페이스 오버라이드 사용
+			@Override // annotation // 습관적으로 붙이는 것이 좋다.
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+			}
+		};
+		
+		tiger.func01();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+// 익명 객체
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01();
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		 new Tiger() { // 익명 객체
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+			}
+		}.func01(); // 여기서 즉석에서 만들고 사용한다.
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01();
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger() {
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+			}
+		};
+				
+		Tiger t2 = new Tiger() {
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("코끼리");
+			}
+		};
+		
+		t1.func01();
+		t2.func01();
+		
+		Tiger t3 = t1;
+		t3.func01();
+		
+		t3 = new Tiger() {
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("앵무새");
+			}
+		};
+		
+		t3.func01();
+		
+		String s = new String();
+		s = new String();
+		s = new String();
+		
+	}
+}
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01();
+// 여기서도 함수를 만들 수 있다.	
+	void func03() {
+		System.out.println("사자");
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger() {
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+				func02(); // 여기서 콜 해야한다.
+			}
+			
+			void func02() {
+				System.out.println("코끼리");
+			} // 함수 2번을 만들 수 있다.
+		
+		};
+		
+		t1.func01();
+//		t1.func02(); // 오류
+		t1.func03();
+		
+	}
+}
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract Tiger func01();
+	abstract Tiger func02();
+	abstract Tiger func03();	
+}
+
+class Lion extends Tiger{
+	@Override
+	Tiger func01() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+	@Override
+	Tiger func02() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+	@Override
+	Tiger func03() {
+		// TODO Auto-generated method stub
+		return this;
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger() {
+			@Override
+			Tiger func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+				return this;
+			}
+			@Override
+			Tiger func02() {
+				// TODO Auto-generated method stub
+				System.out.println("사자");
+				return this;
+			}
+			@Override
+			Tiger func03() {
+				// TODO Auto-generated method stub				
+				System.out.println("코끼리");
+				return this;
+			}
+		};
+			
+			t1.func01();
+			t1.func02();
+			t1.func03();
+		
+		new Tiger (){
+			@Override
+			Tiger func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+				return this;
+			}
+			@Override
+			Tiger func02() {
+				// TODO Auto-generated method stub
+				System.out.println("사자");
+				return this;
+			}
+			@Override
+			Tiger func03() {
+				// TODO Auto-generated method stub
+				System.out.println("코끼리");
+				return this;
+			}
+		}.func01().func02().func03();
+		
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01();
+}
+
+class Lion{
+	void func01() {
+		
+		Tiger t1 = new Tiger() {
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");				
+			}
+		};
+		
+		t1.func01(); // 여기서 콜을 해줘야 한다.
+		System.out.println("앵무새");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Lion l1 = new Lion();
+		l1.func01();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+abstract class Tiger{
+	abstract void func01();
+}
+
+class Lion{
+
+	Tiger t1;
+	
+	Tiger t2 = new Tiger() {
+		@Override
+		void func01() {
+			// TODO Auto-generated method stub
+			System.out.println("호랑이");
+		}
+	};
+	
+	void func01() {
+		t2.func01();
+	}
+		
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Lion l1 = new Lion();
+		l1.func01();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+abstract class Tiger{
+	abstract void func01();
+}
+
+class Lion{
+	
+	void func01(Tiger tiger) {
+		tiger.func01();
+	}
+
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Lion l1 = new Lion();
+		
+		l1.func01(new Tiger(){ // Tiger() 뒤에 엔터하고 오버라이딩
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+				for (int i = 0; i < 10; i++) {
+					System.out.println(5+" * "+i+" = "+(5*i) );
+				}
+			}
+		});
+		
+		l1.func01(new Tiger() {
+			@Override
+			void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("앵무새");
+				int s = 0;
+				for (int i = 1; i <= 10; i++) {
+					s = s + i;
+				}
+				System.out.println(s);
+			}
+		});
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+//인터페이스
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+// 키워드가 바꼈다. 완전히 미완성 코드만 넣을 수 있다.
+// abstract는 생략한다.
+interface Tiger{  
+	void func01();
+	void func02();
+	void func03();
+}
+
+// 인터페이스를 상속 받는 implements
+// 인터페이스 함수 이름 앞에는 반드시 public을 붙여줘야 한다.
+class Lion implements Tiger{
+	@Override
+	public void func01() {
+		// TODO Auto-generated method stub
+		System.out.println("호랑이");
+	}
+	@Override
+	public void func02() {
+		// TODO Auto-generated method stub		
+		System.out.println("코끼리");
+	}
+	@Override
+	public void func03() {
+		// TODO Auto-generated method stub		
+		System.out.println("사자");
+	}
+}
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Lion lion = new Lion();
+	
+		lion.func01();
+		lion.func02();
+		lion.func03();
+		
+		Tiger t1 = new Tiger() {
+			@Override
+			public void func01() {
+				// TODO Auto-generated method stub
+				System.out.println("호랑이");
+			}
+			@Override
+			public void func02() {
+				// TODO Auto-generated method stub
+				System.out.println("코끼리");
+			}
+			@Override
+			public void func03() {
+				// TODO Auto-generated method stub
+				System.out.println("사자");
+			}
+		};
+		
+		t1.func01();
+		t1.func02();
+		t1.func03();
+		
+	}
+}
+
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+interface A{
+	void func01();
+}
+
+interface B{
+	void func02();
+}
+
+class C{
+	void func03() {
+
+	}
+}
+
+class D extends C implements A, B { // extends implements 순서
+	@Override
+	public void func01() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void func02() {
+		// TODO Auto-generated method stub
+		
+	}
+}
+	
+public class Hello {
+
+	public static void main(String[] args) {
+	
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class A{
+	
+}
+
+interface B{
+	
+}
+
+class C extends A{ // 클래스 클래스
+	
+}
+
+class D implements B{ // 클래스 인터페이스
+	
+}
+
+interface E extends B{ // 인턴페이스 인터페이스
+	
+}
+
+// 인터페이스 클래스는 안된다.
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+// 버전 1
+// 코드 자체를 수정해야 한다.
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class 장기{
+	void play() {
+		System.out.println("게임을 시작합니다.");
+		System.out.println("상대는 알파고 입니다.");
+	}
+}
+
+// 인터페이스 클래스는 안된다.
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+		장기 j = new 장기();
+		j.play();
+		
+	}
+}
+
+
+/*-----------------------------------------------------------------------------*/
+// 버전 2
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class 장기{
+	void play(알파고 alphago) {
+		System.out.println("게임을 시작합니다.");
+		alphago.fight();
+	}
+	void play(베타고 betago) {
+		System.out.println("게임을 시작합니다.");
+		betago.fight();
+	}
+	void play(감마고 gammago) {
+		System.out.println("게임을 시작합니다.");
+		gammago.fight();
+	}
+}
+
+class 알파고{
+	void fight() {
+		System.out.println("상대는 알파고 입니다.");
+	}
+}
+
+class 베타고{
+	void fight() {
+		System.out.println("상대는 베타고 입니다.");
+	}
+}
+
+class 감마고{
+	void fight() {
+		System.out.println("상대는 감마고 입니다.");
+	}
+}
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+		장기 j = new 장기();
+		j.play(new 알파고());
+		j.play(new 베타고());	
+		j.play(new 감마고());	
+		
+	}
+}
+
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class 장기{
+	void play(AI ai) {
+		System.out.println("게임을 시작합니다.");
+		ai.fight();
+	}
+}
+
+abstract class AI{
+	abstract void fight(); 
+}
+
+class 알파고  extends AI{
+	void fight() {
+		System.out.println("상대는 알파고 입니다.");
+	}
+}
+
+class 베타고 extends AI{
+	void fight() {
+		System.out.println("상대는 베타고 입니다.");
+	}
+}
+
+class 감마고 extends AI{
+	void fight() {
+		System.out.println("상대는 감마고 입니다.");
+	}
+}
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+		장기 j = new 장기();
+		j.play(new 알파고());
+		j.play(new 베타고());	
+		j.play(new 감마고());	
+		
+	}
+}
+
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class 장기{
+	void play(AI ai) {
+		System.out.println("게임을 시작합니다.");
+		ai.fight();
+	}
+	void stop(AI ai) {
+		System.out.println("게임을 멈춥니다.");
+		ai.stop();
+	}
+}
+
+abstract class AI{
+	abstract void fight(); 
+	abstract void stop(); 
+}
+
+class 알파고  extends AI{
+	void fight() {
+		System.out.println("상대는 알파고 입니다.");
+	}
+	void stop() {
+		System.out.println("알파고가 휴식");
+	}
+}
+
+class 베타고 extends AI{
+	void fight() {
+		System.out.println("상대는 베타고 입니다.");
+	}
+	void stop() {
+		System.out.println("베타고가 휴식");
+	}
+}
+
+class 감마고 extends AI{
+	void fight() {
+		System.out.println("상대는 감마고 입니다.");
+	}
+	void stop() {
+		System.out.println("베타고가 휴식");
+	}
+}
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+		장기 j = new 장기();
+		알파고 a = new 알파고();
+		베타고 b = new 베타고();
+		감마고 c = new 감마고();
+		
+		j.play(a);
+		j.play(b);	
+		j.play(c);
+		
+		System.out.println("-------------------------");
+		
+		j.stop(a);
+		j.stop(b);
+		j.stop(c);
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class 장기{
+	
+	AI ai;
+	
+	장기(AI ai){
+		this.ai = ai;
+	}
+	
+	void play() {
+		System.out.println("게임을 시작합니다.");
+		ai.fight();
+	}
+	void stop() {
+		System.out.println("게임을 멈춥니다.");
+		ai.stop();
+	}
+	
+}
+
+abstract class AI{
+	abstract void fight(); 
+	abstract void stop(); 
+}
+
+class 알파고  extends AI{
+	void fight() {
+		System.out.println("상대는 알파고 입니다.");
+	}
+	void stop() {
+		System.out.println("알파고가 휴식");
+	}
+}
+
+class 베타고 extends AI{
+	void fight() {
+		System.out.println("상대는 베타고 입니다.");
+	}
+	void stop() {
+		System.out.println("베타고가 휴식");
+	}
+}
+
+class 감마고 extends AI{
+	void fight() {
+		System.out.println("상대는 감마고 입니다.");
+	}
+	void stop() {
+		System.out.println("베타고가 휴식");
+	}
+}
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+		알파고 a = new 알파고();
+		베타고 b = new 베타고();
+		감마고 c = new 감마고();		
+		
+		장기 j = new 장기(c);		
+		j.play();
+		j.stop();
+		
+		장기 j1 = new 장기(a);
+		j1.play();
+		j1.play();
+		
+		장기 j2 = new 장기(b);
+		j2.play();
+		j2.play();
+
+		
+	}
+}
+
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class 장기{
+	
+	AI ai;
+	
+	장기(AI ai){
+		this.ai = ai;
+	}
+	
+	void play() {
+		System.out.println("장기 게임을 시작합니다.");
+		ai.fight();
+	}
+	void stop() {
+		System.out.println("장기 게임을 멈춥니다.");
+		ai.stop();
+	}
+	
+}
+
+class 바둑{
+	
+	AI ai;
+	
+	바둑(AI ai){
+		this.ai = ai;
+	}
+	
+	void play() {
+		System.out.println("바둑 게임을 시작합니다.");
+		ai.fight();
+	}
+	void stop() {
+		System.out.println("바둑 게임을 멈춥니다.");
+		ai.stop();
+	}
+	
+}
+
+interface AI{
+	void fight(); 
+	void stop(); 
+}
+
+class 알파고  implements AI{
+	public void fight() {
+		System.out.println("상대는 알파고 입니다.");
+	}
+	public void stop() {
+		System.out.println("알파고가 휴식");
+	}
+}
+
+class 베타고 implements AI{
+	public void fight() {
+		System.out.println("상대는 베타고 입니다.");
+	}
+	public void stop() {
+		System.out.println("베타고가 휴식");
+	}
+}
+
+class 감마고 implements AI{
+	public void fight() {
+		System.out.println("상대는 감마고 입니다.");
+	}
+	public void stop() {
+		System.out.println("베타고가 휴식");
+	}
+}
+	
+public class Hello {
+
+	public static void main(String[] args) {
+
+		베타고 betago = new 베타고();
+		바둑 b = new 바둑(betago);
+				
+		b.play();
+		b.stop();
+		
+	}
+}
+
+

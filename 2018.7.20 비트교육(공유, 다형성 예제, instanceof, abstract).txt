@@ -1,0 +1,633 @@
+1교시
+/*---------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{
+	int a, b, c;
+	Lion lion; // 생성자에서 라이언 객체를 만든다.
+	Tiger(Lion lion){
+		System.out.println("호랑이 생성자 콜");
+		this.lion = lion;
+	}
+
+	// 인수가 한개 일 때는 컨트롤 스페이스 사용
+	// 생성자에서 라이언을 만들어 놓으면 인수를 전달하지 않아도 된다.
+	void func01() { 
+		lion.func03(); // 인수 이름.함수 번호
+	}
+
+	void func02() {
+		lion.func03();
+	}
+
+	void func04() {
+		lion.func03();
+	}
+	
+}
+
+class Lion{
+	int a, b, c;
+	Lion(){
+		System.out.println("사자 생성자 콜");
+	}
+	
+	void func03() {
+		System.out.println("함수 3번 콜");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger t1 = new Tiger(new Lion());
+/*		t1.func01(new Lion());
+		t1.func02(new Lion());
+		t1.func04(new Lion());*/
+
+// 생성자에서 라이언 객체를 만들어 놓으면 함수를 사용할 때 객체를 선언하지 않아도 된다.
+		t1.func01();
+		t1.func02();
+		t1.func04();
+		
+	}
+}
+
+/*---------------------------------------------*/
+
+// 객체
+// new를 사용하거나 공유(참조)를 하여야 사용할 수 있다.
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{
+	int a, b, c;
+	Tiger(){
+		System.out.println("호랑이 생성자 콜");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger 현승 = new Tiger();
+		현승.a = 10;
+		System.out.println(현승); // 생길 때 만들어진 고유 번호
+		
+		Tiger 멋쟁이; // 객체 이름만 선언했다.
+//		System.out.println(멋쟁이);
+		멋쟁이 = 현승; // 현승이가 멋쟁이라는 별명을 가진다.
+		System.out.println(멋쟁이); // 고유 번호가 같다.
+		System.out.println(멋쟁이.a); // 현승.a와 같이 10을 가지고 있다.
+		
+		멋쟁이.a = 1000;
+		System.out.println(현승.a); // 메모리를 공유(참조)한다.
+		
+		Tiger 성민 = new Tiger(); 
+		System.out.println(성민); // 현승의 고유 번호와 다르다.
+		
+		멋쟁이 = 성민;
+		System.out.println(멋쟁이);
+		
+		Tiger 곰돌이;
+		곰돌이 = 멋쟁이;
+		System.out.println(곰돌이);
+		
+		현승 = 곰돌이; // 자기것이 사라진다.
+		System.out.println(현승);
+		
+		성민 = new Tiger(); // 새로운 번호를 받았다.
+		System.out.println(성민);
+		System.out.println(멋쟁이);
+		
+	}
+}
+
+/*---------------------------------------------*/
+// 값을 대입하는 것과 차이점
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{
+	int a, b, c;
+	Tiger(){
+		System.out.println("호랑이 생성자 콜");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		int a = 10;
+		int b;
+		b = a; // 이것은 대입 
+		System.out.println(b);
+		b = 1000;
+		System.out.println(a);
+		
+	}
+}
+
+
+/*---------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{
+	int a, b, c;
+	Tiger(){
+		System.out.println("호랑이 생성자 콜");
+	}
+	
+	void func01(Lion lion){ // = new Lion()
+		System.out.println(lion);
+	}
+}
+
+class Lion{
+	int a, b, c;
+	Lion(){
+		System.out.println("사자 생성자 콜");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		Tiger t1 = new Tiger();
+		t1.func01(new Lion());
+		t1.func01(new Lion()); // 다른 것이 생성 된다.
+		
+		Lion l1 = new Lion();
+		System.out.println(l1);
+		t1.func01(l1); // l1의 고유번호와 같다.
+		t1.func01(l1); 
+		
+		Lion l2;
+		l2 = l1; 
+		t1.func01(l2); // l1은 l2는 같다.
+		t1.func01(l1);
+		
+	}
+}
+
+/*---------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Apple{
+
+	void func01(Orange orange) {// = o1; // = new Orange
+		System.out.println(orange.num);
+		orange.num = 999;
+		System.out.println(orange);
+	}
+	
+	void func02(Orange 호랑이) { // = 사자
+		System.out.println(호랑이);
+	}
+	
+}
+
+class Orange{
+	int num;
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		Apple a1 = new Apple();
+		Orange o1 = new Orange();
+		
+		o1.num = 10;
+		
+		a1.func01(o1);
+		
+		a1.func01(o1);
+		System.out.println(o1);
+		
+		Apple 호랑이 = new Apple();
+		Orange 사자 = new Orange();
+		a1.func02(사자);
+		System.out.println(사자);
+		
+
+	}
+}
+
+/*---------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Apple{
+
+	Orange ooo;
+	
+	void func01(Orange o) {
+		ooo = o;
+	}
+	
+	void func02() {
+		System.out.println(ooo.money);
+	}
+	
+	void func03() {
+		ooo.money = 999;
+	}
+
+}
+
+class Orange{
+	
+	int money;
+
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		Apple apple = new Apple();
+		Orange orange = new Orange();
+
+		orange.money = 1000;
+		apple.func01(orange); // 메모리 공유
+		apple.func02();
+		apple.func03();
+		apple.func02();
+		orange.money = 3000;
+		apple.func02();
+				
+	}
+}
+
+/*---------------------------------------------*/
+// 변형하기전
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Apple{
+	
+	void func01(Orange o, Kiwi k, Remon r) {
+		System.out.println("오렌지를 먹고 4번 콜");
+		o.func04();
+		k.func05();
+		r.func06();
+	}
+	void func02(Orange o, Kiwi k, Remon r) {
+		System.out.println("오렌지를 씹고 4번 콜");
+		o.func04();
+		k.func05();
+		r.func06();
+	}
+	void func03(Orange o, Kiwi k, Remon r) {
+		System.out.println("오렌지를 닦고 4번 콜");
+		o.func04();
+		k.func05();
+		r.func06();
+	}
+	
+}
+
+class Orange{
+	
+	void func04() {
+		System.out.println("4번 콜");
+	}
+	
+}
+
+class Kiwi{
+	
+	void func05() {
+		System.out.println("5번 콜");
+	}
+	
+}
+
+class Remon{
+	
+	void func06() {
+		System.out.println("6번 콜");
+	}
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		Apple apple = new Apple();
+		Orange orange = new Orange();
+		Kiwi kiwi = new Kiwi();
+		Remon remon = new Remon();
+		
+		apple.func01(orange, kiwi, remon);
+		apple.func02(orange, kiwi, remon);
+		apple.func03(orange, kiwi, remon);
+				
+	}
+}
+
+/*---------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Apple{
+
+	Orange orange;
+	Kiwi kiwi;
+	Remon remon;
+	Banana banana;
+
+// 오른쪽 버튼  source generate constructor
+	
+	public Apple(Orange orange, Kiwi kiwi, Remon remon, Banana banana) {
+		super();
+		this.orange = orange;
+		this.kiwi = kiwi;
+		this.remon = remon;
+		this.banana = banana;
+	}
+	
+	void func01() {
+		System.out.println("오렌지를 먹고 4번 콜");
+		orange.func04();
+		kiwi.func05();
+		remon.func06();
+		banana.func07();
+	}
+	void func02() {
+		System.out.println("오렌지를 씹고 4번 콜");
+		orange.func04();
+		kiwi.func05();
+		remon.func06();
+		banana.func07();
+	}
+	void func03() {
+		System.out.println("오렌지를 닦고 4번 콜");
+		orange.func04();
+		kiwi.func05();
+		remon.func06();
+		banana.func07();
+	}
+	
+}
+
+class Orange{
+	
+	void func04() {
+		System.out.println("4번 콜");
+	}
+	
+}
+
+class Kiwi{
+	
+	void func05() {
+		System.out.println("5번 콜");
+	}
+	
+}
+
+class Remon{
+	
+	void func06() {
+		System.out.println("6번 콜");
+	}
+	
+}
+
+class Banana{
+	
+	void func07() {
+		System.out.println("7번 콜");
+	}
+	
+}
+
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		Orange orange = new Orange();
+		Kiwi kiwi = new Kiwi();
+		Remon remon = new Remon();
+		Banana banana = new Banana();
+		
+		Apple apple = new Apple(orange, kiwi, remon, banana);
+		
+		apple.func01();
+		apple.func02();
+		apple.func03();
+				
+	}
+}
+
+
+/*---------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{
+	void cry() {
+		System.out.println("어흥");
+	}	
+}
+
+class Dog{	
+	void cry() {
+		System.out.println("왈왈");
+	}
+}
+
+class Cat{
+	void cry() {
+		System.out.println("야옹");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Tiger tiger = new Tiger();
+		Dog dog = new Dog();
+		Cat cat = new Cat();	
+
+		for (int i = 0; i < 10; i++) {
+			int rn = (new Random()).nextInt(3);
+			System.out.println(rn);
+			
+			switch(rn) {
+			case 0:
+				tiger.cry();
+				break;
+			case 1:
+				dog.cry();
+				break;
+			case 2:
+				cat.cry();
+				break;
+			}
+
+		}
+
+	}
+}
+
+/*---------------------------------------------*/
+// 다형성 예제
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Animal{
+	void cry() {
+		
+	}
+}
+
+class Tiger extends Animal{
+	void cry() {
+		System.out.println("어흥");
+	}	
+}
+
+class Dog extends Animal{	
+	void cry() {
+		System.out.println("왈왈");
+	}
+}
+
+class Cat extends Animal{
+	void cry() {
+		System.out.println("야옹");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+		Animal[] animal = new Animal[3];
+		
+		// 다형성이 되었다.
+		animal[0] = new Tiger();
+		animal[1] = new Dog();
+		animal[2] = new Cat();	
+
+		for (int i = 0; i < 10; i++) {
+			int rn = (new Random()).nextInt(3);
+			System.out.println(rn);
+			animal[rn].cry();
+		}
+
+		// 객체 타입 확인
+		Animal a1 = new Tiger();
+		// in 컨트롤 스페이스
+		
+		if (a1 instanceof Tiger) {
+			System.out.println("호랑이 맞다");
+		}else {
+			System.out.println("호랑이 아님");
+		}
+
+		if (a1 instanceof Cat) {
+			System.out.println("호랑이 맞다");
+		}else {
+			System.out.println("호랑이 아님");
+		}
+
+	}
+}
+
+/*---------------------------------------------*/
+//abstract
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+// 추상 함수 
+// 미완성인 함수
+// 자식이 만들어라.
+// 반드시 자식이 구현해야 한다.
+// 객체를 생성할 수 없다.
+
+abstract class Apple{
+	abstract void func01();
+}
+
+// 함수를 반드시 적어줘야 한다.
+class Banana extends Apple{
+	void func01() {
+		System.out.println("호랑이");
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+
+//		Apple a = new Apple(); // 이렇게 만들 수 없다.
+		Banana banana = new Banana();
+		banana.func01();
+		
+	}
+}
+
+/*---------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

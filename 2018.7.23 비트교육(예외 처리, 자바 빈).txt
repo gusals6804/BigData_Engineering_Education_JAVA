@@ -1,0 +1,439 @@
+//예외처리 오류
+/*-----------------------------------------------------------------------------*/
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+import PACK01.Animal.Tiger;
+
+class Tiger{
+	void func01() {
+		
+	}
+}
+
+class Animal{
+	
+}
+
+class Dog extends Animal{
+	
+}
+
+class Cat extends Animal{
+	
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		// null 확실하게 알려준다.
+		// 생성 되어있는 객체도 죽인다.
+		// null을 사용하면 이런 오류가 뜬다.
+		//NullPointerException // 예외
+//		Tiger t1 = null; 
+//		t1.func01(); 
+		
+		//ArrayIndexOutOfBoundsException
+		//유효 범위를 벗어났다.
+//		int[] ar = new int[3];
+//		ar[5] = 100;
+		
+		//ArithmeticException
+		//산술 에러가 발생, 수학적인 오류
+		//int a = 5 / 0;
+		
+		//Dog dog1 = new Dog();
+		
+		// 부=자; up casting 
+		Animal animal = new Dog();
+		
+		// 자 = 부 down casting 받는 놈으로 casting 해줘야한다.
+		// 자기것으로 받아와야 한다.
+		Dog dog = (Dog) animal;
+		
+		//ClassCastException
+		//Cat cat = (Cat) animal;
+		
+		//Animal animal1 = new Cat();
+		//Cat cat = (Cat) animal1;
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		// 객체를 선언하면서 생성한다.
+		Animal a1 = new Animal();
+		
+		// 객체를 선언했다.
+		Animal a2;
+		// 객체를 선언한 것을 생성했다.
+		a2 = new Animal();
+		
+		// 동일한 객체 이름 사용 불가
+		// Animal a1;
+		// Animal a2;
+		
+		//int a;
+		//int a;
+		
+		// 부-자 관계 up casting
+		Animal a3 = new Dog();
+		Animal a4 = new Cat();
+	
+		Dog d1;
+		// 자-부 관계 down casting
+		//d1 = a3; // 왼쪽은 자식 오른쪽은 부모
+		d1 = (Dog) a3;
+		
+		Cat c1;
+		c1 = (Cat) a4;
+		
+		// 여기서 예외처리발생
+/*		Dog d2;
+		d2 = (Dog) a4; // a3로 받아야한다.
+		
+		Cat c2;
+		c2 = (Cat) a3;*/
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+import PACK01.Animal.Tiger;
+
+class Animal{
+	void func01() {
+		System.out.println("부모 함수 1");
+	}
+	void func03() {
+		System.out.println("부모 함수 3");
+	}
+}
+
+class Dog extends Animal{
+	void func02() {
+		System.out.println("자식 함수 2");
+	}
+	void func03() {
+		System.out.println("자식 함수 3");
+		func02(); // 오버라이딩 함수에 함수 2번을 사용
+	}
+}
+
+public class Hello {
+
+	public static void main(String[] args) {
+		
+		Animal a1 = new Animal();
+		// Animal 타입만 사용
+//		a1.func01();
+		
+		Animal a2 = new Dog();
+		// Animal 타입만 사용
+//		a2.func01();
+		
+		// 오버라이딩 될 때는 자식의 함수 사용
+//		a2.func03();
+		
+		// 다운 캐스팅
+		// 업 캐스팅 된 객체의 자식 함수를 사용하고 싶을 때
+		Dog d1 = (Dog) a2;
+		d1.func02();
+		
+		// 이렇게 하면 다형성 코드를 못쓴다.
+		Dog d2 = new Dog();
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+
+public class Hello {
+	static void func01() {
+		System.out.println("호랑이");
+	}
+	
+	public static void main(String[] args) {
+		
+		func01();
+		func02();
+		
+	}
+
+	static void func02() {
+		System.out.println("코끼리");
+	}
+	
+}
+
+/*-----------------------------------------------------------------------------*/
+// try - catch
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Hello {
+	
+	public static void main(String[] args) {
+		
+		System.out.println("호랑이");
+	
+		// try - catch
+		// exception이 발생하면 catch로
+		// try 컨트롤 스페이스
+		try {
+			int a = 5/0;						
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			// 어떤 exception인지 보여주는 것
+		}
+		
+		// 예외처리 오류 이후에는 출력이 되지 않는다.
+		// 중단이 아니라 알려주는 것이 목적이다.
+		System.out.println("코끼리");
+	
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+//throws Exception
+//Thread.sleep
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+class Tiger{
+	Exception func01() throws Exception { // 예외를 던진다.
+		System.out.println("호랑이");
+		return new Exception();
+	}
+}
+
+public class Hello {
+	
+	public static void main(String[] args) {
+		
+		Tiger t1 = new Tiger();
+		
+		// Unhandled exception type Exception
+		try {			
+			t1.func01();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		//Unhandled exception type InterruptedException
+		try {
+			for (int i = 0; i < 10; i++) {
+				Thread.sleep(1000); // 프로그램을 지연
+				System.out.println(i);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+//get 과 set 사용
+//java bean
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.swing.plaf.SliderUI;
+
+class Tiger{
+	private String name;
+	private String adress;
+	private int age;
+	
+	// 함수를 사용해서 바꿀 수 있다.
+	void setAge(int age) {
+		this.age = age;
+	}
+	int getAger() {
+		return age;
+	} // 함수를 이용해서 사용해라
+	
+	void setName(String name) {
+		this.name = name;
+	}
+	String getName() {
+		return name;
+	}
+	
+	void setAdress(String adress) {
+		this.adress = adress;
+	}
+	String getAdress() {
+		return adress;
+	}
+	
+	void func01() { System.out.println("호랑이"); }
+}
+public class Hello {
+	// 이렇게 사용가능
+	// 오류를 알고 싶을 때는 try-catch 사용
+	public static void main(String[] args)/*throws Exception*/{
+
+		// 컨트롤 알트 j 단축키 한줄 처리 해준다
+//		try { Thread.sleep(1000); } catch (Exception e) { }
+		
+		Tiger t1 = new Tiger();
+	 /* t1.name = "호랑이";
+		t1.adress = "김해시";
+		t1.age = 25; */
+	
+		t1.setAge(999);
+		System.out.println(t1.getAger());
+		
+		t1.setName("호랑이");
+		System.out.println(t1.getName());
+		
+		t1.setAdress("김해");
+		System.out.println(t1.getAdress());
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+// 자바 빈 만들기
+// 오른쪽 버튼 - 소스 - 제널레이트 setter getter
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.swing.plaf.SliderUI;
+
+class Tiger{
+	private String name;
+	private String adress;
+	private int age;
+	
+	// 함수를 사용해서 바꿀 수 있다.
+	// 오른쪽 버튼 - 소스 - 제널레이트 setter getter
+	// 그다음 한 줄 처리
+	void setName(String name) { this.name = name; }
+	String getName() { return name; }
+	
+	void setAdress(String adress) { this.adress = adress; }
+	String getAdress() { return adress; }
+	
+	void setAge(int age) { this.age = age; }
+	int getAge() { return age; } 
+	
+	void func01() { System.out.println("호랑이"); }
+}
+public class Hello {
+	// 이렇게 사용가능
+	// 오류를 알고 싶을 때는 try-catch 사용
+	public static void main(String[] args)/*throws Exception*/{
+
+		// 컨트롤 알트 j 단축키 한줄 처리 해준다
+//		try { Thread.sleep(1000); } catch (Exception e) { }
+		
+		Tiger t1 = new Tiger();
+	     /* t1.name = "호랑이";
+		t1.adress = "김해시";
+		t1.age = 25; */
+	
+		t1.setAge(999);
+		System.out.println(t1.getAge());
+		
+		t1.setName("호랑이");
+		System.out.println(t1.getName());
+		
+		t1.setAdress("김해");
+		System.out.println(t1.getAdress());
+		
+	}
+}
+
+/*-----------------------------------------------------------------------------*/
+// Wrapper
+// 타입 변화
+// int num = Integer.parseInt(s);
+// String s1 = Integer.toString(num);
+
+package PACK01;
+
+import java.util.Random;
+import java.util.Scanner;
+
+import javax.swing.plaf.SliderUI;
+
+public class Hello {
+	// 이렇게 사용가능
+	// 오류를 알고 싶을 때는 try-catch 사용
+	public static void main(String[] args)/*throws Exception*/{
+
+		// 이 과정을 Wrapper
+		// a는 변수
+		short a = 10; // 일반 타입
+		// b는 객체
+		Short b = 20; // Short라는 클래스가 존재
+		
+		long c = 30;
+		Long d = 40l; // l을 붙여야한다.
+		
+		Float e = 3.14f;
+		
+		int f = 10;
+		Integer g = 20; // 많이 쓰인다.
+		
+		String s = "1234";
+		// 문자를 숫자로 바꿀 때
+		int num = Integer.parseInt(s);
+		
+		System.out.println(s+100);
+		System.out.println(num+100);
+		
+		num = 5678;
+		// 숫자를 문자로 바꿀 때
+		String s1 = Integer.toString(num);
+		// 이 방법도 있다.
+		String s2 = num + "";
+		
+		System.out.println(num+100);
+		System.out.println(s1+100);
+		System.out.println(s2+100);
+		
+	}
+
+}
+
+/*-----------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
